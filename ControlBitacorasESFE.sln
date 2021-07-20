@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlBitacorasESFE.DAL", "ControlBitacorasESFE.DAL\ControlBitacorasESFE.DAL.csproj", "{2047E072-09B7-4954-A940-CE08A18059AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlBitacorasESFE.BL", "ControlBitacorasESFE.BL\ControlBitacorasESFE.BL.csproj", "{070F608E-C06D-4008-975A-F0D2F2934120}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlBitacorasESFE.EL", "ControlBitacorasESFE.EL\ControlBitacorasESFE.EL.csproj", "{A3F5E14D-8F0B-404F-8226-BC5E4889C73A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlBitacorasESFE.API", "ControlBitacorasESFE.API\ControlBitacorasESFE.API.csproj", "{6F506A5D-46BE-40ED-890F-EA6115CA0A7B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2047E072-09B7-4954-A940-CE08A18059AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2047E072-09B7-4954-A940-CE08A18059AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2047E072-09B7-4954-A940-CE08A18059AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2047E072-09B7-4954-A940-CE08A18059AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{070F608E-C06D-4008-975A-F0D2F2934120}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{070F608E-C06D-4008-975A-F0D2F2934120}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{070F608E-C06D-4008-975A-F0D2F2934120}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{070F608E-C06D-4008-975A-F0D2F2934120}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3F5E14D-8F0B-404F-8226-BC5E4889C73A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3F5E14D-8F0B-404F-8226-BC5E4889C73A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3F5E14D-8F0B-404F-8226-BC5E4889C73A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3F5E14D-8F0B-404F-8226-BC5E4889C73A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F506A5D-46BE-40ED-890F-EA6115CA0A7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F506A5D-46BE-40ED-890F-EA6115CA0A7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F506A5D-46BE-40ED-890F-EA6115CA0A7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F506A5D-46BE-40ED-890F-EA6115CA0A7B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {715C560A-A63A-4269-A144-E14B91BEB9BA}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://dev.azure.com/jmanuelhm09
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ControlBitacorasESFE.API\\ControlBitacorasESFE.API.csproj
+		SccProjectName1 = ControlBitacorasESFE.API
+		SccLocalPath1 = ControlBitacorasESFE.API
+		SccProjectUniqueName2 = ControlBitacorasESFE.BL\\ControlBitacorasESFE.BL.csproj
+		SccProjectName2 = ControlBitacorasESFE.BL
+		SccLocalPath2 = ControlBitacorasESFE.BL
+		SccProjectUniqueName3 = ControlBitacorasESFE.DAL\\ControlBitacorasESFE.DAL.csproj
+		SccProjectName3 = ControlBitacorasESFE.DAL
+		SccLocalPath3 = ControlBitacorasESFE.DAL
+		SccProjectUniqueName4 = ControlBitacorasESFE.EL\\ControlBitacorasESFE.EL.csproj
+		SccProjectName4 = ControlBitacorasESFE.EL
+		SccLocalPath4 = ControlBitacorasESFE.EL
+	EndGlobalSection
+EndGlobal
