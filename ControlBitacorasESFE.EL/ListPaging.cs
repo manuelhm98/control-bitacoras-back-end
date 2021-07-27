@@ -9,5 +9,6 @@ namespace ControlBitacorasESFE.EL
    public class ListPaging: PagingModel
     {
         public List<Usuario> Usuarios { get; set; }
+
     }
 }

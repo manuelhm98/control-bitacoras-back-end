@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,10 +36,49 @@ namespace ControlBitacorasESFE.DAL
             }
 
         }
+        //Metodo de Editar
+        public int EditarUsuario(Usuario usuario)
+        {
+            int r = 0;
+            try
+            {
+                var local = db.Set<Usuario>().Local.FirstOrDefault(f => f.UsuarioID == usuario.UsuarioID);
+                if (local != null)
+                {
+                    db.Entry(local).State = EntityState.Detached;
+                }
+                db.Entry(usuario).State = EntityState.Modified;
+                r = db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return r;
+        }
+
+        //Metodo Eliminado Logico 
+        public int EliminarUsuario(int id)
+        {
+            int r = 0;
+            try
+            {
+                Usuario usuario = buscarId(id);
+                usuario.Estado = 0;
+                r = EditarUsuario(usuario);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return r;
+        }
+
 
         //Busqueda por ID
         public Usuario buscarId(int id)
         {
+            //
             Usuario usuario = null;
             try
             {
@@ -51,6 +91,7 @@ namespace ControlBitacorasESFE.DAL
             {
                 throw ex;
             }
+
             return usuario;
         }
 
@@ -100,36 +141,17 @@ namespace ControlBitacorasESFE.DAL
         }
 
 
-
-
-        public List<Usuario> listusuarios(int posicion, ref int totalpage)
-        {
-            totalpage =  db.Usuarios.Count();
-            var list = (from Usuario in db.Usuarios where Usuario.Estado == 1 select Usuario).OrderBy(z => z.UsuarioID).Skip(posicion).Take(3).ToList();
-            List<Usuario> usuarios = list;
-            return usuarios;
-        }
-
-        public List<Usuario> getUsuarios(bool estado)
-        {
-
-            var list = from Usuario in db.Usuarios where Usuario.Estado == 1 select Usuario;
-            return list.ToList();
-        }
-
-         
         public ListPaging  usuariosLista(int page = 1, int pageSize = 5)
         {
-            var usuarios = (from Usuario in db.Usuarios where Usuario.Estado == 1 select Usuario).OrderBy(x => x.UsuarioID).Skip((page - 1) * pageSize)
+            var usuarios = (from Usuario in db.Usuarios where Usuario.Estado == 1 select Usuario).OrderByDescending(x => x.UsuarioID).Skip((page - 1) * pageSize)
                 .Take(pageSize).ToList();
-            int totalRegistros = db.Usuarios.Count();
+            int totalRegistros = (from Usuario in db.Usuarios where Usuario.Estado == 1 select Usuario).Count();
 
 
             var model = new ListPaging();
             model.Usuarios = usuarios;
             model.paginaActual = page;
             model.TotalRegistros = totalRegistros / pageSize;
-
 
 
 
