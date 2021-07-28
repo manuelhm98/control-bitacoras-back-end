@@ -67,13 +67,14 @@
     <Compile Include="Falla.cs" />
     <Compile Include="JWT\TokenGenerator.cs" />
     <Compile Include="JWT\TokenValidationHandler.cs" />
-    <Compile Include="ListPaging.cs" />
+    <Compile Include="Middlewares\ListPaging.cs" />
     <Compile Include="Login\Auth.cs" />
     <Compile Include="Login\Respuesta.cs" />
     <Compile Include="Login\UserData.cs" />
+    <Compile Include="Middlewares\ListPaginRol.cs" />
     <Compile Include="Monitor.cs" />
     <Compile Include="Mueble.cs" />
-    <Compile Include="PagingModel.cs" />
+    <Compile Include="Middlewares\PagingModel.cs" />
     <Compile Include="Procesador.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PuestosTrabajo.cs" />

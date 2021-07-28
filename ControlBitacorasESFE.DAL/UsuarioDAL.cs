@@ -140,7 +140,7 @@ namespace ControlBitacorasESFE.DAL
             return r = token; 
         }
 
-
+        //Paginacion
         public ListPaging  usuariosLista(int page = 1, int pageSize = 5)
         {
             var usuarios = (from Usuario in db.Usuarios where Usuario.Estado == 1 select Usuario).OrderByDescending(x => x.UsuarioID).Skip((page - 1) * pageSize)
