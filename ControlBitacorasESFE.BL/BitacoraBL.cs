@@ -1,5 +1,6 @@
 ﻿using ControlBitacorasESFE.DAL;
 using ControlBitacorasESFE.EL;
+using ControlBitacorasESFE.EL.Middlewares;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,23 +15,39 @@ namespace ControlBitacorasESFE.BL
         private BitacoraDAL bitacoraDAL = new BitacoraDAL();
 
         //Instancia Guardar 
-        public int GuardarBitacora(Bitacora bitacora)
+        public int guardarBitacora(Bitacora bitacora)
         {
-            return bitacoraDAL.GuardarBitacora(bitacora);
+            return bitacoraDAL.guardarBitacora(bitacora);
         }
 
 
         //Instancia Editar 
-        public int EditarBitacora(Bitacora bitacora)
+        public int editarBitacora(Bitacora bitacora)
         {
-            return bitacoraDAL.EditarBitacoras(bitacora);
+            return bitacoraDAL.editarBitacoras(bitacora);
         }
 
 
         //Instancia Eliminar 
-        public int EliminarBitacora(int BitacoraID)
+        public int eliminarBitacora(int BitacoraID)
         {
-            return bitacoraDAL.EliminarBitacora(BitacoraID);
+            return bitacoraDAL.eliminarBitacora(BitacoraID);
+        }
+        //PAGINADO
+        public ListPagingBitacora listaBitacoras(int page = 1, int pageSize = 5)
+        {
+            return bitacoraDAL.bitacorasLista(page, pageSize);
+        }
+        //LISTA
+        public List<Bitacora> bitacoras()
+        {
+            return bitacoraDAL.bitacoras();
+        }
+
+        //BY ID
+        public Bitacora buscarId(int id)
+        {
+            return bitacoraDAL.buscarId(id);
         }
     }
 }

@@ -52,5 +52,10 @@ namespace ControlBitacorasESFE.BL
         {
             return usuarioDAL.usuariosLista(page, pageSize);
         }
+
+        public List<Usuario> usuarios()
+        {
+            return usuarioDAL.usuarios();
+        }
     }
 }

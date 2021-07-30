@@ -17,7 +17,7 @@ namespace ControlBitacorasESFE.API.Controllers
 
         //Instancia Guardar
         [HttpPost]
-        [Route("api/area/guardar")]
+        [Route("api/area")]
         public int GuardarArea(Area area)
         {
             return areaBL.GuardarArea(area);
@@ -25,7 +25,7 @@ namespace ControlBitacorasESFE.API.Controllers
 
         //Instancia Editar
         [HttpPut]
-        [Route("api/area/editar")]
+        [Route("api/area")]
         public int EditarArea(Area area)
         {
             return areaBL.EditarArea(area);
@@ -33,10 +33,26 @@ namespace ControlBitacorasESFE.API.Controllers
 
         //Instancia Eliminar 
         [HttpDelete]
-        [Route("api/area/eliminar/{id}")]
+        [Route("api/area/{id}")]
         public int EliminarArea(int id)
         {
             return areaBL.EliminarAre(id);
+        }
+
+        //LISTA
+        [HttpGet]
+        [Route("api/area")]
+        public List<Area> areas()
+        {
+            return areaBL.areas();
+        }
+
+        //BY ID 
+        [HttpGet]
+        [Route("api/area/{id}")]
+        public Area buscarId(int id)
+        {
+            return areaBL.BuscarId(id);
         }
     }
 }

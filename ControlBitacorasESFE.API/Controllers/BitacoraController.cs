@@ -1,5 +1,6 @@
 ﻿using ControlBitacorasESFE.BL;
 using ControlBitacorasESFE.EL;
+using ControlBitacorasESFE.EL.Middlewares;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,30 +15,54 @@ namespace ControlBitacorasESFE.API.Controllers
         //Instancia de los metodos BL
         private BitacoraBL bitacoraBL = new BitacoraBL();
 
+        //LISTA
+        [HttpGet]
+        [Route("api/bitacora")]
+        public List<Bitacora> bitacoras()
+        {
+            return bitacoraBL.bitacoras();
+        }
+
+        //PAGIN
+        [HttpGet]
+        [Route("api/bitacora/lista")]
+        public ListPagingBitacora listPagingBitacora(int page = 1, int pageSize = 5)
+        {
+            return bitacoraBL.listaBitacoras(page, pageSize);
+        }
 
         //Instancia Guardar
         [HttpPost]
-        [Route("api/bitacora/guardar")]
-        public int GuardarBitacora(Bitacora bitacora)
+        [Route("api/bitacora")]
+        public int guardarBitacora(Bitacora bitacora)
         {
-            return bitacoraBL.GuardarBitacora(bitacora);
+            return bitacoraBL.guardarBitacora(bitacora);
         }
 
         //Instancia Editar
         [HttpPut]
-        [Route("api/bitacora/editar")]
-        public int EditarBitacora(Bitacora bitacora)
+        [Route("api/bitacora")]
+        public int editarBitacora(Bitacora bitacora)
         {
-            return bitacoraBL.EditarBitacora(bitacora);
+            return bitacoraBL.editarBitacora(bitacora);
         }
 
 
         //Instancia Eliminar 
         [HttpDelete]
-        [Route("api/bitacora/eliminar/{id}")]
-        public int EliminarBitacora(int id)
+        [Route("api/bitacora/{id}")]
+        public int eliminarBitacora(int id)
         {
-            return bitacoraBL.EliminarBitacora(id);
+            return bitacoraBL.eliminarBitacora(id);
         }
+
+        //BY ID 
+        [HttpGet]
+        [Route("api/bitacora/{id}")]
+        public Bitacora buscarId(int id)
+        {
+            return bitacoraBL.buscarId(id);
+        }
+
     }
 }

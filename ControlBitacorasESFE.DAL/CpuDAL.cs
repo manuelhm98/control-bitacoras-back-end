@@ -1,4 +1,5 @@
 ﻿using ControlBitacorasESFE.EL;
+using ControlBitacorasESFE.EL.Middlewares;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -88,6 +89,39 @@ namespace ControlBitacorasESFE.DAL
                 throw ex;
             }
             return cpu;
+        }
+
+        //LISTA PAGIN 
+        public ListPagingCpu ListPaging(int page = 1, int pageSize = 5)
+        {
+            var cpus = (from Cpu in db.Cpus.Include(p => p.Procesador)
+                        where Cpu.Estado == 1
+                        select Cpu).OrderByDescending(x => x.CpuID).Skip((page - 1) * pageSize)
+                        .Take(pageSize).ToList();
+
+            int totalRegistros = (from Cpu in db.Cpus where Cpu.Estado == 1 select Cpu).Count();
+
+            var model = new ListPagingCpu();
+            model.Cpus = cpus;
+            model.paginaActual = page;
+            model.TotalRegistros = totalRegistros / pageSize;
+
+            if(model.TotalRegistros % 2 != 0)
+            {
+                model.TotalRegistros = Math.Truncate(model.TotalRegistros) + 1;
+            }
+
+            return model;
+        }
+
+        //LISTA CPUS
+        public List<Cpu> cpus()
+        {
+            var cpus = (from Cpu in db.Cpus.Include(p => p.Procesador)
+                        where Cpu.Estado == 1
+                        select Cpu).ToList();
+
+            return cpus;
         }
     }
 }

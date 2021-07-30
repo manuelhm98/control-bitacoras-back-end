@@ -71,6 +71,9 @@
     <Compile Include="Login\Auth.cs" />
     <Compile Include="Login\Respuesta.cs" />
     <Compile Include="Login\UserData.cs" />
+    <Compile Include="Middlewares\ListPagingBitacora.cs" />
+    <Compile Include="Middlewares\ListPagingCpu.cs" />
+    <Compile Include="Middlewares\ListPagingEquipoArea.cs" />
     <Compile Include="Middlewares\ListPaginRol.cs" />
     <Compile Include="Monitor.cs" />
     <Compile Include="Mueble.cs" />

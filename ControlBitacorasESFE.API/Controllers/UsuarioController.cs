@@ -19,7 +19,13 @@ namespace ControlBitacorasESFE.API.Controllers
         // GET: api/Usuario
        UsuarioBL usuarioBL = new UsuarioBL();
 
-
+        //USUARIOS
+        [HttpGet]
+        [Route("api/usuario")]
+        public List<Usuario> usuarios()
+        {
+            return usuarioBL.usuarios();
+        }
         //Metodo Guardar 
         [HttpPost]
         [Route("api/usuario")]

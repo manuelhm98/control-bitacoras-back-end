@@ -10,6 +10,11 @@ namespace ControlBitacorasESFE.BL
 {
     public class AreaBL
     {
+        //LIST
+        public List<Area> areas()
+        {
+            return areaDAL.listaArea();
+        }
         //Instancia de los metodos
         private AreaDAL areaDAL = new AreaDAL();
 
@@ -30,5 +35,11 @@ namespace ControlBitacorasESFE.BL
         {
             return areaDAL.EliminarArea(AreaID);
         }
+
+        //Buscar ID
+        public Area BuscarId (int id)
+        {
+            return areaDAL.BuscarID(id);
+        } 
     }
 }

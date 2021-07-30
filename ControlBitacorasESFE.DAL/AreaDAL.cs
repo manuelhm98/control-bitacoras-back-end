@@ -93,8 +93,5 @@ namespace ControlBitacorasESFE.DAL
             }
             return area;
         }
-
-
-
     }
 }

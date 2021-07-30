@@ -1,4 +1,5 @@
 ﻿using ControlBitacorasESFE.EL;
+using ControlBitacorasESFE.EL.Middlewares;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -15,7 +16,7 @@ namespace ControlBitacorasESFE.DAL
 
 
         //Metodo de guardar
-        public int GuardarBitacora(Bitacora bitacora)
+        public int guardarBitacora(Bitacora bitacora)
         {
             int r = 0;
             try
@@ -34,7 +35,7 @@ namespace ControlBitacorasESFE.DAL
         }
 
         //Metodo Editar
-        public int EditarBitacoras(Bitacora bitacora)
+        public int editarBitacoras(Bitacora bitacora)
         {
             int r = 0;
             try
@@ -55,14 +56,14 @@ namespace ControlBitacorasESFE.DAL
         }
 
         //Eliminado logico 
-        public int EliminarBitacora(int BitacoraID)
+        public int eliminarBitacora(int BitacoraID)
         {
             int r = 0;
             try
             {
-                Bitacora bitacora = BuscarID(BitacoraID);
+                Bitacora bitacora = buscarId(BitacoraID);
                 bitacora.Estado = 0;
-                r = EditarBitacoras(bitacora);
+                r = editarBitacoras(bitacora);
             }
             catch (Exception ex)
             {
@@ -72,7 +73,7 @@ namespace ControlBitacorasESFE.DAL
         }
 
         //Obtener ID
-        public Bitacora BuscarID(int BitacoraID)
+        public Bitacora buscarId(int BitacoraID)
         {
             Bitacora bitacora = null;
             try
@@ -87,6 +88,39 @@ namespace ControlBitacorasESFE.DAL
                 throw ex;
             }
             return bitacora;
+        }
+        //PAGINACION
+        public ListPagingBitacora bitacorasLista(int page = 1, int pageSize = 5)
+        {
+            var bitacoras = (from Bitacora in db.Bitacoras.Include(p => p.PuestosTrabajo).Include(u => u.Usuario).Include(f => f.Falla)
+                             where Bitacora.Estado == 1
+                             select Bitacora).OrderByDescending(x => x.BitacoraID).Skip((page - 1) * pageSize)
+                             .Take(pageSize).ToList();
+            int totalRegistros = (from Bitacora in db.Bitacoras where Bitacora.Estado == 1 select Bitacora).Count();
+
+            var model = new ListPagingBitacora();
+            model.Bitacoras = bitacoras;
+            model.paginaActual = page;
+            model.TotalRegistros = totalRegistros / pageSize;
+
+            if(model.TotalRegistros % 2 != 0)
+            {
+                model.TotalRegistros = Math.Truncate(model.TotalRegistros) + 1;
+            }
+
+            model.RegistroPorPagina = pageSize;
+
+            return model;
+        }
+        //LISTA
+        public List<Bitacora> bitacoras()
+        {
+            var bitacoras = (from Bitacora in db.Bitacoras.Include(p => p.PuestosTrabajo).Include(u => u.Usuario).Include(f => f.Falla)
+                             where Bitacora.Estado == 1
+                             select Bitacora).OrderByDescending(x => x.BitacoraID).ToList();
+
+            return bitacoras;
+         //   return db.Bitacoras.ToList();
         }
     }
 }

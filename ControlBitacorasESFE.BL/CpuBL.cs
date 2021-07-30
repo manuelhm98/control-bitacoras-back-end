@@ -1,5 +1,6 @@
 ﻿using ControlBitacorasESFE.DAL;
 using ControlBitacorasESFE.EL;
+using ControlBitacorasESFE.EL.Middlewares;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,5 +33,22 @@ namespace ControlBitacorasESFE.BL
         {
             return cpuDAL.EliminarCpu(CpuID);
         }
+
+        //BY ID 
+        public Cpu buscarID(int id)
+        {
+            return cpuDAL.BuscarID(id);
+        }
+        //LIST PAGIN 
+        public ListPagingCpu ListPaging(int page = 1, int pageSize = 5)
+        {
+            return cpuDAL.ListPaging(page, pageSize);
+        }
+
+        //LISTA CPU
+        public List<Cpu> cpus()
+        {
+            return cpuDAL.cpus();
+        } 
     }
 }

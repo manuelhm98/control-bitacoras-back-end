@@ -157,13 +157,24 @@ namespace ControlBitacorasESFE.DAL
 
 
 
-            if (model.TotalRegistros % 2 !=0)
+            if (model.TotalRegistros % 2 != 0)
             {
                 model.TotalRegistros = Math.Truncate(model.TotalRegistros) + 1;
             }
             model.RegistroPorPagina = pageSize;
      
             return model;
+        }
+
+        public List<Usuario> usuarios()
+        {
+            var usuarios = (from Usuario in db.Usuarios.Include(r => r.Role)
+                            where Usuario.Estado == 1
+                            select Usuario)
+                            .OrderByDescending(x => x.UsuarioID).ToList();
+
+            return usuarios;
+
         }
 
     }

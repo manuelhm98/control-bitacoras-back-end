@@ -1,4 +1,5 @@
 ﻿using ControlBitacorasESFE.EL;
+using ControlBitacorasESFE.EL.Middlewares;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -88,6 +89,42 @@ namespace ControlBitacorasESFE.DAL
                 throw ex;
             }
             return equipoArea;
+        }
+
+        //LIST PAGIN 
+        public ListPagingEquipoArea listPaging(int page = 5, int pageSize = 5)
+        {
+            var equipoAreas = (from EquipoArea in db.EquipoAreas.Include(a => a.Area)
+                               where EquipoArea.Estado == 1
+                               select EquipoArea).OrderByDescending(x => x.EquipoAreaID).Skip((page - 1) * pageSize)
+                               .Take(pageSize).ToList();
+
+            int totalRegistros = (from EquipoArea in db.EquipoAreas
+                                  where EquipoArea.Estado == 1
+                                  select EquipoArea).Count();
+
+            var model = new ListPagingEquipoArea();
+            model.EquipoAreas = equipoAreas;
+            model.paginaActual = page;
+            model.TotalRegistros = totalRegistros / pageSize;
+
+            if(model.TotalRegistros % 2 != 0)
+            {
+                model.TotalRegistros = Math.Truncate(model.TotalRegistros) + 1;
+            }
+
+            return model; 
+        }
+
+        //LISTA EQUIPOAREAS
+        public List<EquipoArea> equipoAreas()
+        {
+            var equipoAreas = (from EquipoArea in db.EquipoAreas.Include(a => a.Area)
+                               where EquipoArea.Estado == 1
+                               select EquipoArea).ToList();
+
+            return equipoAreas;
+
         }
     }
 }
