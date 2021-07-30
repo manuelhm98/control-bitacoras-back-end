@@ -111,6 +111,7 @@ namespace ControlBitacorasESFE.DAL
                 model.TotalRegistros = Math.Truncate(model.TotalRegistros) + 1;
             }
 
+            model.RegistroPorPagina = pageSize;
             return model;
         }
 

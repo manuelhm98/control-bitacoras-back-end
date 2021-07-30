@@ -1,5 +1,6 @@
 ﻿using ControlBitacorasESFE.DAL;
 using ControlBitacorasESFE.EL;
+using ControlBitacorasESFE.EL.Middlewares;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,24 @@ namespace ControlBitacorasESFE.BL
         public int EliminarTipoFalla(int TipoFallaID)
         {
             return tipoFallaDAL.EliminarTipoFalla(TipoFallaID);
+        }
+
+        //LISTA PAGING 
+        public ListPagingTipoFalla listPaging(int page = 1, int pageSize = 5)
+        {
+            return tipoFallaDAL.ListPaging(page, pageSize);
+        }
+
+        //LISTA TIPO FALLA 
+        public List<TipoFalla> tipoFallas()
+        {
+            return tipoFallaDAL.tipoFallas();
+        }
+
+        //BY ID 
+        public TipoFalla buscarId(int id)
+        {
+            return tipoFallaDAL.BuscarID(id);
         }
     }
 }

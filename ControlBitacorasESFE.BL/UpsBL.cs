@@ -1,5 +1,6 @@
 ﻿using ControlBitacorasESFE.DAL;
 using ControlBitacorasESFE.EL;
+using ControlBitacorasESFE.EL.Middlewares;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,24 @@ namespace ControlBitacorasESFE.BL
         public int EliminarUps(int UpsID)
         {
             return upsDAL.EliminarUps(UpsID);
+        }
+
+        //LIST PAGING 
+        public ListPagingUps listPaging(int page = 1, int pageSize = 5)
+        {
+            return upsDAL.listPaging(page, pageSize);
+        }
+
+        //LISTA UPS 
+        public List<Ups> ups()
+        {
+            return upsDAL.ups();
+        }
+
+        //BY ID 
+        public Ups buscarId(int id)
+        {
+            return upsDAL.BuscarID(id);
         }
     }
 }

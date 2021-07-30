@@ -1,5 +1,6 @@
 ﻿using ControlBitacorasESFE.BL;
 using ControlBitacorasESFE.EL;
+using ControlBitacorasESFE.EL.Middlewares;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,6 +46,14 @@ namespace ControlBitacorasESFE.API.Controllers
         public List<Area> areas()
         {
             return areaBL.areas();
+        }
+
+        //lISTA PAGING 
+        [HttpGet]
+        [Route("api/area/lista")]
+        public ListPagingArea listPaging(int page = 1, int pageSize = 5)
+        {
+            return areaBL.listPaging(page, pageSize);
         }
 
         //BY ID 

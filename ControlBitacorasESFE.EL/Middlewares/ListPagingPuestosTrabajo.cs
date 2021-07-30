@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ControlBitacorasESFE.EL.Middlewares
 {
-   public class ListPagingFalla: PagingModel
+  public  class ListPagingPuestosTrabajo: PagingModel
     {
-        public List<Falla> Fallas { get; set; }
+        public List<PuestosTrabajo> PuestosTrabajos { get; set; }
     }
 }

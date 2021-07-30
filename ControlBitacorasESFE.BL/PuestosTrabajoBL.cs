@@ -1,5 +1,6 @@
 ﻿using ControlBitacorasESFE.DAL;
 using ControlBitacorasESFE.EL;
+using ControlBitacorasESFE.EL.Middlewares;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,5 +33,25 @@ namespace ControlBitacorasESFE.BL
         {
             return PuestosTrabajoDAL.EliminarPuestosTrabajo(PuestosTrabajoID);
         }
+
+        //LISTA PAGNG
+        public ListPagingPuestosTrabajo listPaging(int page = 1, int pageSize = 5)
+        {
+            return PuestosTrabajoDAL.listPaging(page, pageSize);
+        }
+
+        //LISTA PUESTOS 
+        public List<PuestosTrabajo> puestosTrabajos()
+        {
+            return PuestosTrabajoDAL.puestosTrabajos();
+        }
+
+        //BY ID 
+        public PuestosTrabajo buscarId(int id)
+        {
+            return PuestosTrabajoDAL.BuscarID(id);
+        }
+
+
     }
 }

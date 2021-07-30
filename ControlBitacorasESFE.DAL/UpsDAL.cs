@@ -1,4 +1,5 @@
 ﻿using ControlBitacorasESFE.EL;
+using ControlBitacorasESFE.EL.Middlewares;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -73,12 +74,15 @@ namespace ControlBitacorasESFE.DAL
 
 
         //Metodo Buscar ID
-        public Ups BuscarID(int UpsID)
+        public Ups BuscarID(int id)
         {
             Ups ups = null;
-            try
+            try  
             {
-                ups = db.Upss.Find(UpsID);
+                if (id > 0 || id != 0)
+                {
+                    ups = db.Upss.Find(id);
+                }
             }
             catch (Exception ex)
             {
@@ -86,6 +90,44 @@ namespace ControlBitacorasESFE.DAL
             }
             return ups;
         }
-        
+
+        //LIST PAGING 
+        public ListPagingUps listPaging(int page = 1, int pageSize = 5)
+        {
+            var ups = (from Ups in db.Upss
+                       where Ups.Estado == 1
+                       select Ups).OrderByDescending(x => x.UpsID)
+                       .Skip((page - 1) * pageSize)
+                       .Take(pageSize).ToList();
+
+            int totalRegistros = (from Ups in db.Upss
+                                  where Ups.Estado == 1
+                                  select Ups).Count();
+
+            var model = new ListPagingUps();
+            model.Ups = ups;
+            model.paginaActual = page;
+            model.TotalRegistros = totalRegistros / pageSize;
+
+            if(model.TotalRegistros % 2 != 0)
+            {
+                model.TotalRegistros = Math.Truncate(model.TotalRegistros) + 1;
+            }
+
+            model.RegistroPorPagina = pageSize;
+
+            return model;
+        }
+
+        //LISTA UPS 
+        public List<Ups> ups()
+        {
+            var ups = (from Ups in db.Upss
+                       where Ups.Estado == 1
+                       select Ups).ToList();
+
+            return ups;
+        }
+
     }
 }

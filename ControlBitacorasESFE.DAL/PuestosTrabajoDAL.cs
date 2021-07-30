@@ -1,4 +1,5 @@
 ﻿using ControlBitacorasESFE.EL;
+using ControlBitacorasESFE.EL.Middlewares;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -88,5 +89,51 @@ namespace ControlBitacorasESFE.DAL
             }
             return puestosTrabajo;
         }
+
+        //LIST PAGING
+        public ListPagingPuestosTrabajo listPaging(int page = 1, int pageSize = 5)
+        {
+            var puestosTrabajo = (from PuestosTrabajo in db.PuestosTrabajos.Include(a => a.Area)
+                                  .Include(m => m.Monitor)
+                                  .Include(u => u.Ups)
+                                  .Include(c => c.Cpu)
+                                  .Include(mu => mu.Mueble)
+                                  where PuestosTrabajo.Estado == 1
+                                  select PuestosTrabajo).OrderByDescending(x => x.PuestosTrabajoID)
+                                  .Skip((page - 1) * pageSize)
+                                  .Take(pageSize).ToList();
+
+            int totalRegistros = (from PuestosTrabajo in db.PuestosTrabajos where PuestosTrabajo.Estado == 1 select PuestosTrabajo).Count();
+
+            var model = new ListPagingPuestosTrabajo();
+            model.PuestosTrabajos = puestosTrabajo;
+            model.paginaActual = page;
+            model.TotalRegistros = totalRegistros / pageSize;
+
+            if(model.TotalRegistros % 2 != 0)
+            {
+                model.TotalRegistros = Math.Truncate(model.TotalRegistros) + 1;
+            }
+
+            model.RegistroPorPagina = pageSize;
+
+            return model;
+        }
+
+        //LISTA PUESTOS TRABAJO 
+        public List<PuestosTrabajo> puestosTrabajos()
+        {
+            var puestosTrabajo = (from PuestosTrabajo in db.PuestosTrabajos.Include(a => a.Area)
+                                  .Include(m => m.Monitor)
+                                  .Include(u => u.Ups)
+                                  .Include(c => c.Cpu)
+                                  .Include(mu => mu.Mueble)
+                                  where PuestosTrabajo.Estado == 1
+                                  select PuestosTrabajo).ToList();
+
+            return puestosTrabajo;
+        }
+
+
     }
 }

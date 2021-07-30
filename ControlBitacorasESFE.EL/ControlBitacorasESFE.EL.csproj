@@ -71,6 +71,7 @@
     <Compile Include="Login\Auth.cs" />
     <Compile Include="Login\Respuesta.cs" />
     <Compile Include="Login\UserData.cs" />
+    <Compile Include="Middlewares\ListPagingArea.cs" />
     <Compile Include="Middlewares\ListPagingBitacora.cs" />
     <Compile Include="Middlewares\ListPagingCpu.cs" />
     <Compile Include="Middlewares\ListPagingEquipoArea.cs" />
@@ -78,6 +79,10 @@
     <Compile Include="Middlewares\ListPagingMonitor.cs" />
     <Compile Include="Middlewares\ListPagingMueble.cs" />
     <Compile Include="Middlewares\ListPagingProcesador.cs" />
+    <Compile Include="Middlewares\ListPagingPuestosTrabajo.cs" />
+    <Compile Include="Middlewares\ListPagingTipoArea.cs" />
+    <Compile Include="Middlewares\ListPagingTipoFalla.cs" />
+    <Compile Include="Middlewares\ListPagingUps.cs" />
     <Compile Include="Middlewares\ListPaginRol.cs" />
     <Compile Include="Monitor.cs" />
     <Compile Include="Mueble.cs" />

@@ -1,4 +1,5 @@
 ﻿using ControlBitacorasESFE.EL;
+using ControlBitacorasESFE.EL.Middlewares;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -16,7 +17,12 @@ namespace ControlBitacorasESFE.DAL
         //Metodo de lista 
         public List<Area> listaArea()
         {
-            return db.Areas.ToList();
+            var areas = (from Area in db.Areas.Include(t => t.TipoArea)
+                         .Include(u => u.Usuario)
+                         where Area.Estado == 1
+                         select Area).ToList();
+
+            return areas;
         }
 
         //Metodo de guardar
@@ -93,5 +99,37 @@ namespace ControlBitacorasESFE.DAL
             }
             return area;
         }
+
+        //LIST PAGING 
+        public ListPagingArea listPaging(int page = 1, int pageSize = 5)
+        {
+            var areas = (from Area in db.Areas.Include(t => t.TipoArea)
+                         .Include(u => u.Usuario)
+                         where Area.Estado == 1
+                         select Area).OrderByDescending(x => x.AreaID)
+                         .Skip((page - 1) * pageSize)
+                         .Take(pageSize).ToList();
+
+            int totalRegistros = (from Area in db.Areas.Include(t => t.TipoArea)
+                         .Include(u => u.Usuario)
+                                  where Area.Estado == 1
+                                  select Area).Count();
+
+            var model = new ListPagingArea();
+            model.Areas = areas;
+            model.paginaActual = page;
+            model.TotalRegistros = totalRegistros / pageSize;
+
+            if(model.TotalRegistros % 2 != 0)
+            {
+                model.TotalRegistros = Math.Truncate(model.TotalRegistros) + 1;
+            }
+
+            model.RegistroPorPagina = pageSize;
+
+            return model;
+        }
+
+        
     }
 }

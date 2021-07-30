@@ -1,5 +1,6 @@
 ﻿using ControlBitacorasESFE.BL;
 using ControlBitacorasESFE.EL;
+using ControlBitacorasESFE.EL.Middlewares;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +14,23 @@ namespace ControlBitacorasESFE.API.Controllers
     {
         private PuestosTrabajoBL puestosTrabajoBL = new PuestosTrabajoBL();
 
+        //LISTA PAGIN
+        [HttpGet]
+        [Route("api/puestostrabajo")]
+        public List<PuestosTrabajo> puestosTrabajos()
+        {
+            return puestosTrabajoBL.puestosTrabajos();
+        }
+
+        [HttpGet]
+        [Route("api/puestostrabajo/lista")]
+        public ListPagingPuestosTrabajo listPaging(int page = 1, int pageSize = 5)
+        {
+            return puestosTrabajoBL.listPaging(page, pageSize);
+        }
         //Instancia Guardar
         [HttpPost]
-        [Route("api/puestostrabajo/guardar")]
+        [Route("api/puestostrabajo")]
         public int GuardarPuestosTrabajo(PuestosTrabajo puestosTrabajo)
         {
             return puestosTrabajoBL.GuardarPuestosTrabajo(puestosTrabajo);
@@ -24,7 +39,7 @@ namespace ControlBitacorasESFE.API.Controllers
 
         //Instancia Editar
         [HttpPut]
-        [Route("api/puestostrabajo/editar")]
+        [Route("api/puestostrabajo")]
         public int EditarPuestosTrabajo(PuestosTrabajo puestosTrabajo)
         {
             return puestosTrabajoBL.EditarPuestosTrabajo(puestosTrabajo);
@@ -32,10 +47,17 @@ namespace ControlBitacorasESFE.API.Controllers
 
         //Intancia Eliminar
         [HttpDelete]
-        [Route("api/puestostrabajo/eliminar/{id}")]
+        [Route("api/puestostrabajo/{id}")]
         public int EliminarPuestosTrabajo(int id)
         {
             return puestosTrabajoBL.ElimarPuestosTrabajo(id);
+        }
+
+        [HttpGet]
+        [Route("api/puestostrabajo/{id}")]
+        public PuestosTrabajo buscarId(int id)
+        {
+            return puestosTrabajoBL.buscarId(id);
         }
     }
 }

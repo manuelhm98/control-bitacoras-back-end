@@ -1,5 +1,6 @@
 ﻿using ControlBitacorasESFE.DAL;
 using ControlBitacorasESFE.EL;
+using ControlBitacorasESFE.EL.Middlewares;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,5 +42,13 @@ namespace ControlBitacorasESFE.BL
         {
             return areaDAL.BuscarID(id);
         } 
+
+        //PAGING LIST 
+        public ListPagingArea listPaging(int page = 1, int pageSize = 5)
+        {
+            return areaDAL.listPaging(page, pageSize);
+        }
+
+        /
     }
 }

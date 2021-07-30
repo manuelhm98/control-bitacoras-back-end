@@ -1,5 +1,6 @@
 ﻿using ControlBitacorasESFE.BL;
 using ControlBitacorasESFE.EL;
+using ControlBitacorasESFE.EL.Middlewares;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +14,25 @@ namespace ControlBitacorasESFE.API.Controllers
     {
         private TipoFallaBL tipoFallaBL = new TipoFallaBL();
 
+
+        //LISTA TIPO FALLA 
+        [HttpGet]
+        [Route("api/tipofalla")]
+        public List<TipoFalla> tipoFallas()
+        {
+            return tipoFallaBL.tipoFallas();
+        }
+
+        //LIST PAGING 
+        [HttpGet]
+        [Route("api/tipofalla/lista")]
+        public ListPagingTipoFalla listPaging(int page = 1, int pageSize = 5)
+        {
+            return tipoFallaBL.listPaging(page, pageSize);
+        }
         //Instancia Guardar
         [HttpPost]
-        [Route("api/tipofalla/guardar")]
+        [Route("api/tipofalla")]
         public int GuardarTipoFalla(TipoFalla tipoFalla)
         {
             return tipoFallaBL.GuardarTipoFalla(tipoFalla);
@@ -24,7 +41,7 @@ namespace ControlBitacorasESFE.API.Controllers
 
         //Instancia Editar
         [HttpPut]
-        [Route("api/tipofall/editar")]
+        [Route("api/tipofalla")]
         public int EditarTipoFalla(TipoFalla tipoFalla)
         {
             return tipoFallaBL.EditarTipoFalla(tipoFalla);
@@ -33,10 +50,16 @@ namespace ControlBitacorasESFE.API.Controllers
 
         //Instancia Eliminar
         [HttpDelete] 
-        [Route("api/tipofalla/eliminar/{id}")]
+        [Route("api/tipofalla/{id}")]
         public int EliminarTipoFalla(int id)
         {
             return tipoFallaBL.EliminarTipoFalla(id);
+        }
+
+        //BY ID 
+        public TipoFalla buscarId(int id)
+        {
+            return tipoFallaBL.buscarId(id);
         }
     }
 }
