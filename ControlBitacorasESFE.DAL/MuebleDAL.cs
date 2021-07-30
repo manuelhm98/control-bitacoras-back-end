@@ -1,4 +1,5 @@
 ﻿using ControlBitacorasESFE.EL;
+using ControlBitacorasESFE.EL.Middlewares;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -86,6 +87,44 @@ namespace ControlBitacorasESFE.DAL
                 throw ex;
             }
             return mueble;
+        }
+
+        //LIST PAGING
+        public ListPagingMueble listPaging(int page = 1, int pageSize = 5)
+        {
+            var muebles = (from Mueble in db.Muebles
+                           where Mueble.Estado == 1
+                           select Mueble)
+                           .OrderByDescending(x => x.MuebleID).Skip((page - 1) * pageSize)
+                           .Take(pageSize).ToList();
+
+            int totalRegistros = (from Mueble in db.Muebles
+                                  where Mueble.Estado == 1
+                                  select Mueble).Count();
+
+            var model = new ListPagingMueble();
+            model.Muebles = muebles;
+            model.paginaActual = page;
+            model.TotalRegistros = totalRegistros / pageSize;
+
+            if(model.TotalRegistros % 2 != 0)
+            {
+                model.TotalRegistros = Math.Truncate(model.TotalRegistros) + 1;
+            }
+
+            model.TotalRegistros = pageSize;
+
+            return model;
+        }
+
+        //LISTA MUEBLES
+        public List<Mueble> muebles()
+        {
+            var muebles = (from Mueble in db.Muebles
+                           where Mueble.Estado == 1
+                           select Mueble).ToList();
+
+            return muebles;
         }
     }
 }

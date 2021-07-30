@@ -1,5 +1,6 @@
 ﻿using ControlBitacorasESFE.DAL;
 using ControlBitacorasESFE.EL;
+using ControlBitacorasESFE.EL.Middlewares;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,24 @@ namespace ControlBitacorasESFE.BL
         public int EliminarProcesador(int ProcesadorID)
         {
             return procesadorDAL.EliminaProcesador(ProcesadorID);
+        }
+
+        //PAGING LIST
+        public ListPagingProcesador listPaging(int page = 1, int pageSize = 5)
+        {
+            return procesadorDAL.listPaging(page, pageSize);
+        }
+
+        //LISTA PROCESADOR 
+        public List<Procesador> procesadors()
+        {
+            return procesadorDAL.procesadors();
+        }
+
+        //BY ID 
+        public Procesador buscarId(int id)
+        {
+            return procesadorDAL.BuscarID(id);
         }
     }
 }

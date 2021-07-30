@@ -1,5 +1,6 @@
 ﻿using ControlBitacorasESFE.BL;
 using ControlBitacorasESFE.EL;
+using ControlBitacorasESFE.EL.Middlewares;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +14,25 @@ namespace ControlBitacorasESFE.API.Controllers
     {
         private ProcesadorBL procesadorBL = new ProcesadorBL();
 
+        //LISTA PAGING 
+        [HttpGet]
+        [Route("api/procesador/lista")]
+        public ListPagingProcesador listPaging(int page = 1 , int pageSize = 5)
+        {
+            return procesadorBL.listPaging(page, pageSize);
+        }
+
+        //LISTA PROCESADOR 
+        [HttpGet]
+        [Route("api/procesador")]
+        public List<Procesador> procesadors()
+        {
+            return procesadorBL.procesadors();
+        }
+
         //Intancia Guardar
         [HttpPost]
-        [Route("api/procesador/guardar")]
+        [Route("api/procesador")]
         public int GuardarProcesador(Procesador procesador)
         {
             return procesadorBL.GuardarProcesador(procesador);
@@ -24,7 +41,7 @@ namespace ControlBitacorasESFE.API.Controllers
 
         //Instancia Editar 
         [HttpPut]
-        [Route("api/procesador/editar")]
+        [Route("api/procesador")]
         public int EditarProcesador(Procesador procesador)
         {
             return procesadorBL.EditarProcesador(procesador);
@@ -33,10 +50,17 @@ namespace ControlBitacorasESFE.API.Controllers
 
         //Instancia Eliminar
         [HttpDelete]
-        [Route("api/procesador/eliminar")]
+        [Route("api/procesador")]
         public int EliminarProcesador(int id)
         {
             return procesadorBL.EliminarProcesador(id);
+        }
+
+        [HttpGet]
+        [Route("api/procesador/{id}")]
+        public Procesador buscarId(int id)
+        {
+            return procesadorBL.buscarId(id);
         }
     }
 }

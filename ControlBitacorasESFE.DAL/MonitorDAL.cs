@@ -1,4 +1,5 @@
 ﻿using ControlBitacorasESFE.EL;
+using ControlBitacorasESFE.EL.Middlewares;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -86,6 +87,44 @@ namespace ControlBitacorasESFE.DAL
                 throw ex;
             }
             return monitor;
+        }
+
+        //LIST PAGING
+        public ListPagingMonitor listPaging(int page = 1, int pageSize = 5)
+        {
+            var monitors = (from Monitor in db.Monitors
+                            where Monitor.Estado == 1
+                            select Monitor)
+                            .OrderByDescending(x => x.MonitorID).Skip((page - 1) * pageSize)
+                            .Take(pageSize).ToList();
+
+            int totalRegistros = (from Monitor in db.Monitors
+                                  where Monitor.Estado == 1
+                                  select Monitor).Count();
+
+            var model = new ListPagingMonitor();
+            model.Monitors = monitors;
+            model.paginaActual = page;
+            model.TotalRegistros = totalRegistros / pageSize;
+
+            if(model.TotalRegistros % 2 != 0)
+            {
+                model.TotalRegistros = Math.Truncate(model.TotalRegistros) + 1;
+            }
+
+            model.RegistroPorPagina = pageSize;
+
+            return model;
+        }
+
+        //LISTA MONITORES
+        public List<Monitor> monitors()
+        {
+            var monitors = (from Monitor in db.Monitors
+                            where Monitor.Estado == 1
+                            select Monitor).ToList();
+
+            return monitors;
         }
     }
 }

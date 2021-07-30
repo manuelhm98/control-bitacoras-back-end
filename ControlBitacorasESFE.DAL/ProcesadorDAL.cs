@@ -1,4 +1,5 @@
 ﻿using ControlBitacorasESFE.EL;
+using ControlBitacorasESFE.EL.Middlewares;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -86,6 +87,44 @@ namespace ControlBitacorasESFE.DAL
                 throw ex;
             }
             return procesador;
+        }
+
+        public ListPagingProcesador listPaging(int page = 1, int pageSize = 5)
+        {
+            var procesadors = (from Procesador in db.Procesadors
+                               where Procesador.Estado == 1
+                               select Procesador)
+                               .OrderByDescending(x => x.ProcesadorID)
+                               .Skip((page - 1) * pageSize)
+                               .Take(pageSize).ToList();
+
+            int totalRegistros = (from Procesador in db.Procesadors
+                                  where Procesador.Estado == 1
+                                  select Procesador).Count();
+
+            var model = new ListPagingProcesador();
+            model.Procesadors = procesadors;
+            model.paginaActual = page;
+            model.TotalRegistros = totalRegistros / pageSize;
+
+            if(model.TotalRegistros % 2 != 0)
+            {
+                model.TotalRegistros = Math.Truncate(model.TotalRegistros) + 1;
+            }
+
+            model.RegistroPorPagina = pageSize;
+
+            return model;
+        }
+
+        //LISTA PROCESADOR 
+        public List<Procesador> procesadors()
+        {
+            var procesadors = (from Procesador in db.Procesadors
+                               where Procesador.Estado == 1
+                               select Procesador).ToList();
+
+            return procesadors;
         }
     }
 }

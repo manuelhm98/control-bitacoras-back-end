@@ -1,5 +1,6 @@
 ﻿using ControlBitacorasESFE.BL;
 using ControlBitacorasESFE.EL;
+using ControlBitacorasESFE.EL.Middlewares;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +14,25 @@ namespace ControlBitacorasESFE.API.Controllers
     {
         private MuebleBL muebleBL = new MuebleBL();
 
+        //LIST PAGING 
+        [HttpGet]
+        [Route("api/mueble/lista")]
+        public ListPagingMueble listPaging(int page = 1, int pageSize = 5)
+        {
+            return muebleBL.listPaging(page, pageSize);
+        }
+
+        //LISTA MUEBLE
+        [HttpGet]
+        [Route("api/mueble")]
+        public List<Mueble> muebles()
+        {
+            return muebleBL.muebles();
+        }
+
         //Instancia Guardar
         [HttpPost]
-        [Route("api/mueble/guardar")]
+        [Route("api/mueble")]
         public int GuardarMueble(Mueble mueble)
         {
             return muebleBL.GuardarMueble(mueble);
@@ -23,7 +40,7 @@ namespace ControlBitacorasESFE.API.Controllers
 
         //Instancia Editar
         [HttpPut] 
-        [Route("api/mueble/editar")]
+        [Route("api/mueble")]
         public int EditarMueble(Mueble mueble)
         {
             return muebleBL.EditarMueble(mueble);
@@ -31,10 +48,18 @@ namespace ControlBitacorasESFE.API.Controllers
 
         //Instancia ELiminar
         [HttpDelete]
-        [Route("api/mueble/eliminar/{id}")]
+        [Route("api/mueble/{id}")]
         public int EliminarMueble(int id)
         {
             return muebleBL.EliminarMueble(id);
+        }
+
+        //BY ID 
+        [HttpGet]
+        [Route("api/mueble/{id}")]
+        public Mueble buscarId(int id)
+        {
+            return muebleBL.buscarId(id);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using ControlBitacorasESFE.DAL;
 using ControlBitacorasESFE.EL;
+using ControlBitacorasESFE.EL.Middlewares;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,25 @@ namespace ControlBitacorasESFE.BL
         public int EliminarMonitor(int MonitorID)
         {
             return monitorDAL.EliminarMonitor(MonitorID);
+        }
+
+        //LISTA PAGING
+
+        public ListPagingMonitor listPaging(int page = 1, int pageSize = 5)
+        {
+            return monitorDAL.listPaging(page, pageSize);
+        }
+
+        //LISTA MONITORES
+        public List<Monitor> monitors()
+        {
+            return monitorDAL.monitors();
+        }
+
+        //BY ID 
+        public Monitor buscarId(int id)
+        {
+            return monitorDAL.BuscarID(id);
         }
     }
 }

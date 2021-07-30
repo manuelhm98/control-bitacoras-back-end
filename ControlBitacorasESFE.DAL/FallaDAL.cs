@@ -1,4 +1,5 @@
 ﻿using ControlBitacorasESFE.EL;
+using ControlBitacorasESFE.EL.Middlewares;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -87,6 +88,42 @@ namespace ControlBitacorasESFE.DAL
                 throw ex;
             }
             return falla;
+        }
+
+        //LISTA PAGING 
+
+        public ListPagingFalla listPaging(int page = 1, int pageSize = 5)
+        {
+            var fallas = (from Falla in db.Fallas.Include(f => f.TipoFalla)
+                          where Falla.Estado == 1
+                          select Falla).OrderByDescending(x => x.FallaID).Skip((page - 1) * pageSize)
+                          .Take(pageSize).ToList();
+
+            int totalRegistros = (from Falla in db.Fallas where Falla.Estado == 1 select Falla).Count();
+
+            var model = new ListPagingFalla();
+            model.Fallas = fallas;
+            model.paginaActual = page;
+            model.TotalRegistros = totalRegistros / pageSize;
+
+            if(model.TotalRegistros % 2 != 0)
+            {
+                model.TotalRegistros = Math.Truncate(model.TotalRegistros) + 1;
+            }
+
+            model.RegistroPorPagina = pageSize;
+
+            return model;
+        }
+
+        //LISTA FALLA
+        public List<Falla> fallas()
+        {
+            var fallas = (from Falla in db.Fallas
+                          where Falla.Estado == 1
+                          select Falla).ToList();
+
+            return fallas;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using ControlBitacorasESFE.DAL;
 using ControlBitacorasESFE.EL;
+using ControlBitacorasESFE.EL.Middlewares;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,24 @@ namespace ControlBitacorasESFE.BL
         public int EliminarMueble(int MuebleID)
         {
             return muebleDAL.EliminarMueble(MuebleID);
+        }
+
+        //LISTA PAGING 
+        public ListPagingMueble listPaging(int page = 1, int pageSize = 5)
+        {
+            return muebleDAL.listPaging(page, pageSize);
+        }
+
+        //LISTA MUEBLES
+        public List<Mueble> muebles()
+        {
+            return muebleDAL.muebles();
+        }
+
+        //BY ID 
+        public Mueble buscarId(int id)
+        {
+            return muebleDAL.BuscarID(id);
         }
     }
 }

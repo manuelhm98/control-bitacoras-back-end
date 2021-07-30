@@ -74,6 +74,10 @@
     <Compile Include="Middlewares\ListPagingBitacora.cs" />
     <Compile Include="Middlewares\ListPagingCpu.cs" />
     <Compile Include="Middlewares\ListPagingEquipoArea.cs" />
+    <Compile Include="Middlewares\ListPagingFalla.cs" />
+    <Compile Include="Middlewares\ListPagingMonitor.cs" />
+    <Compile Include="Middlewares\ListPagingMueble.cs" />
+    <Compile Include="Middlewares\ListPagingProcesador.cs" />
     <Compile Include="Middlewares\ListPaginRol.cs" />
     <Compile Include="Monitor.cs" />
     <Compile Include="Mueble.cs" />
