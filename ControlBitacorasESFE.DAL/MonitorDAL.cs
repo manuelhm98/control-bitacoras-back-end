@@ -22,6 +22,7 @@ namespace ControlBitacorasESFE.DAL
             {
                 if(monitor != null)
                 {
+                    monitor.Estado = 1;
                     db.Monitors.Add(monitor);
                     r = db.SaveChanges();
                 }

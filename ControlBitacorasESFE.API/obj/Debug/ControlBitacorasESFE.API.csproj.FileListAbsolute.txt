@@ -130,7 +130,7 @@ F:\ControlBitacorasESFE\ControlBitacorasESFE.API\bin\Microsoft.IdentityModel.Jso
 F:\ControlBitacorasESFE\ControlBitacorasESFE.API\bin\es\System.Net.Http.Formatting.resources.dll
 F:\ControlBitacorasESFE\ControlBitacorasESFE.API\bin\es\System.Web.Http.resources.dll
 F:\ControlBitacorasESFE\ControlBitacorasESFE.API\bin\es\System.Web.Http.WebHost.resources.dll
-F:\ControlBitacorasESFE\ControlBitacorasESFE.API\obj\Debug\ControlBitacorasESFE.API.csprojAssemblyReference.cache
+F:\ControlBitacorasESFE\ControlBitacorasESFE.API\obj\Debug\ControlBitacorasESFE.API.csproj.AssemblyReference.cache
 F:\ControlBitacorasESFE\ControlBitacorasESFE.API\obj\Debug\ControlBitacorasESFE.API.csproj.CoreCompileInputs.cache
 F:\ControlBitacorasESFE\ControlBitacorasESFE.API\obj\Debug\ControlBitacorasESFE.API.csproj.CopyComplete
 F:\ControlBitacorasESFE\ControlBitacorasESFE.API\obj\Debug\ControlBitacorasESFE.API.dll

@@ -37,7 +37,7 @@ F:\ControlBitacorasESFE\ControlBitacorasESFE.DAL\bin\Debug\Microsoft.IdentityMod
 F:\ControlBitacorasESFE\ControlBitacorasESFE.DAL\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
 F:\ControlBitacorasESFE\ControlBitacorasESFE.DAL\bin\Debug\Microsoft.IdentityModel.Logging.xml
 F:\ControlBitacorasESFE\ControlBitacorasESFE.DAL\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.xml
-F:\ControlBitacorasESFE\ControlBitacorasESFE.DAL\obj\Debug\ControlBitacorasESFE.DAL.csprojAssemblyReference.cache
+F:\ControlBitacorasESFE\ControlBitacorasESFE.DAL\obj\Debug\ControlBitacorasESFE.DAL.csproj.AssemblyReference.cache
 F:\ControlBitacorasESFE\ControlBitacorasESFE.DAL\obj\Debug\ControlBitacorasESFE.DAL.csproj.CoreCompileInputs.cache
 F:\ControlBitacorasESFE\ControlBitacorasESFE.DAL\obj\Debug\ControlBitacorasESFE.DAL.csproj.CopyComplete
 F:\ControlBitacorasESFE\ControlBitacorasESFE.DAL\obj\Debug\ControlBitacorasESFE.DAL.dll

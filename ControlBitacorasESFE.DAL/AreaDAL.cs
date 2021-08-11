@@ -33,6 +33,7 @@ namespace ControlBitacorasESFE.DAL
             {
                 if(area != null)
                 {
+                    area.Estado = 1;
                     db.Areas.Add(area);
                     r = db.SaveChanges();
                 }

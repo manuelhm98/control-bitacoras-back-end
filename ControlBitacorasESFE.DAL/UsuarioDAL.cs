@@ -25,6 +25,7 @@ namespace ControlBitacorasESFE.DAL
                 if (usuario != null)
                 {
                     usuario.Pass = Sha256.GetSHA256(usuario.Pass);
+                    usuario.Estado = 1;
                     db.Usuarios.Add(usuario);
                     r = db.SaveChanges();
                 }

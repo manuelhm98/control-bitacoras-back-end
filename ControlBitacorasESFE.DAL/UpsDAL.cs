@@ -22,6 +22,7 @@ namespace ControlBitacorasESFE.DAL
             {
                 if(ups != null)
                 {
+                    ups.Estado = 1;
                     db.Upss.Add(ups);
                     r = db.SaveChanges();
                 }

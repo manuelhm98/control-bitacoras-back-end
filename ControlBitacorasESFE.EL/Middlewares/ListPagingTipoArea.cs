@@ -8,6 +8,6 @@ namespace ControlBitacorasESFE.EL.Middlewares
 {
    public class ListPagingTipoArea: PagingModel
     {
-        public List<TipoArea> TipoAreas { get; set }
+        public List<TipoArea> TipoAreas { get; set; }
     }
 }

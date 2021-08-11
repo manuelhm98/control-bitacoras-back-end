@@ -15,9 +15,9 @@ namespace ControlBitacorasESFE.EL
         [Required]
         public string Codigo { get; set; }
         [Required]
-        public int Ram { get; set; }
+        public string Ram { get; set; }
         [Required]
-        public int Almacenamiento { get; set; }
+        public string Almacenamiento { get; set; }
         [Required]
         public int Estado { get; set; }
         

@@ -22,6 +22,7 @@ namespace ControlBitacorasESFE.DAL
             {
                 if(mueble != null)
                 {
+                    mueble.Estado = 1;
                     db.Muebles.Add(mueble);
                     r = db.SaveChanges();
                 }

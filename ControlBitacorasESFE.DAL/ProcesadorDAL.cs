@@ -22,6 +22,7 @@ namespace ControlBitacorasESFE.DAL
             {
                 if(procesador != null)
                 {
+                    procesador.Estado = 1;
                     db.Procesadors.Add(procesador);
                     r = db.SaveChanges();
                 }

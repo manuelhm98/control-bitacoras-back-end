@@ -24,6 +24,7 @@ namespace ControlBitacorasESFE.DAL
             {
                 if(equipoArea != null)
                 {
+                    equipoArea.Estado = 1;
                     db.EquipoAreas.Add(equipoArea);
                     r = db.SaveChanges();
                 }

@@ -49,6 +49,6 @@ namespace ControlBitacorasESFE.BL
             return areaDAL.listPaging(page, pageSize);
         }
 
-        /
+        
     }
 }

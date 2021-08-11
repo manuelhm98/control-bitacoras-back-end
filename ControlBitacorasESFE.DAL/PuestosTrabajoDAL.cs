@@ -22,6 +22,7 @@ namespace ControlBitacorasESFE.DAL
             {
                 if(puestosTrabajo != null)
                 {
+                    puestosTrabajo.Estado = 1;
                     db.PuestosTrabajos.Add(puestosTrabajo);
                     r = db.SaveChanges();
                 }

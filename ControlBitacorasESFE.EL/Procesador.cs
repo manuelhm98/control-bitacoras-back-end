@@ -16,7 +16,7 @@ namespace ControlBitacorasESFE.EL
         [Required]
         public string Modelo { get; set; }
         [Required]
-        public int Velocidad { get; set; }
+        public string Velocidad { get; set; }
         [Required]
         public int Estado { get; set; }
     }

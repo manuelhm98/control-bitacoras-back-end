@@ -22,6 +22,7 @@ namespace ControlBitacorasESFE.DAL
             {
                 if(tipoArea != null)
                 {
+                    tipoArea.Estado = 1;
                     db.TipoAreas.Add(tipoArea);
                     r = db.SaveChanges();
                 }

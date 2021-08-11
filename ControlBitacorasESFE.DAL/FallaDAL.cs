@@ -23,6 +23,7 @@ namespace ControlBitacorasESFE.DAL
             {
                 if(falla != null)
                 {
+                    falla.Estado = 1;
                     db.Fallas.Add(falla);
                    r = db.SaveChanges();
                 }

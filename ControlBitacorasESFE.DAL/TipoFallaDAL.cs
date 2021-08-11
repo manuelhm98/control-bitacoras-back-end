@@ -22,6 +22,7 @@ namespace ControlBitacorasESFE.DAL
             {
                 if(tipoFalla != null)
                 {
+                    tipoFalla.Estado = 1;
                     db.TipoFallas.Add(tipoFalla);
                     r = db.SaveChanges();
                 }

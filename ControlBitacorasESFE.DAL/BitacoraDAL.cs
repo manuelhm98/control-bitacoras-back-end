@@ -23,6 +23,7 @@ namespace ControlBitacorasESFE.DAL
             {
                 if(bitacora != null)
                 {
+                    bitacora.Estado = 1;
                     db.Bitacoras.Add(bitacora);
                     db.SaveChanges();
                 }

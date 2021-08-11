@@ -52,6 +52,7 @@ namespace ControlBitacorasESFE.DAL
             {
                 if(role != null)
                 {
+                    role.Estado = 1;
                     db.Roles.Add(role);
                     r = db.SaveChanges();
                 }
