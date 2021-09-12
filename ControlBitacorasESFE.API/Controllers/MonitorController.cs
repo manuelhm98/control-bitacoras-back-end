@@ -16,12 +16,7 @@ namespace ControlBitacorasESFE.API.Controllers
         private MonitorBL monitorBL = new MonitorBL();
   
         //PAGING LIST
-        [HttpGet]
-        [Route("api/monitor/lista")]
-        public ListPagingMonitor listPaging(int page = 1, int pageSize = 5)
-        {
-            return monitorBL.listPaging(page, pageSize);
-        }
+     
         
         //LISTA MONITORES
         [HttpGet]
@@ -55,6 +50,13 @@ namespace ControlBitacorasESFE.API.Controllers
             return monitorBL.EliminarMonitor(id);
         }
 
+        [HttpGet]
+        [Route("api/monitor/lista")]
+        public ListPagingMonitor listPaging(int page = 1, int pageSize = 5)
+        {
+            return monitorBL.listPaging(page, pageSize);
+        }
+
         //  BY ID 
         [HttpGet]
         [Route("api/monitor/{id}")]
@@ -62,10 +64,5 @@ namespace ControlBitacorasESFE.API.Controllers
         {
             return monitorBL.buscarId(id);
         }
-
-
-
-       
-       
     }
 }

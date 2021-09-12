@@ -142,14 +142,20 @@ namespace ControlBitacorasESFE.DAL
         }
 
         //Paginacion
-        public ListPaging  usuariosLista(int page = 1, int pageSize = 5)
+        public ListPaging  usuariosLista(int page = 1, int pageSize = 5, string name = "", string rol = "")
         {
+            if(page <= 0 && pageSize <= 0)
+            {
+                page = 1;
+                pageSize = 5;
+            }
+
             var usuarios = (from Usuario in db.Usuarios.Include(r => r.Role)
-                            where Usuario.Estado == 1 select Usuario)
-                            .OrderByDescending(x => x.UsuarioID).Skip((page - 1) * pageSize)
+                           where Usuario.Estado == 1  && Usuario.Nombre.Contains(name)  && Usuario.Role.Roles.Contains(rol) select Usuario)
+
+                .OrderByDescending(x => x.UsuarioID).Skip((page - 1) * pageSize)
                 .Take(pageSize).ToList();
             int totalRegistros = (from Usuario in db.Usuarios where Usuario.Estado == 1 select Usuario).Count();
-
 
             var model = new ListPaging();
             model.Usuarios = usuarios;

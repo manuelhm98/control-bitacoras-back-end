@@ -48,9 +48,9 @@ namespace ControlBitacorasESFE.BL
             return usuarioDAL.Login(auth);
         }
 
-        public ListPaging usuariosLista(int page = 1, int pageSize = 5)
+        public ListPaging usuariosLista(int page = 1, int pageSize = 5, string name = "", string rol = "")
         {
-            return usuarioDAL.usuariosLista(page, pageSize);
+            return usuarioDAL.usuariosLista(page, pageSize, name, rol);
         }
 
         public List<Usuario> usuarios()

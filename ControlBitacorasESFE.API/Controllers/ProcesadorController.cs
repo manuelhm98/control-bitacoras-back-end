@@ -50,7 +50,7 @@ namespace ControlBitacorasESFE.API.Controllers
 
         //Instancia Eliminar
         [HttpDelete]
-        [Route("api/procesador")]
+        [Route("api/procesador/{id}")]
         public int EliminarProcesador(int id)
         {
             return procesadorBL.EliminarProcesador(id);

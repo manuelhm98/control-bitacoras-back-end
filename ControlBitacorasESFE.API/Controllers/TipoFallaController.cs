@@ -57,6 +57,8 @@ namespace ControlBitacorasESFE.API.Controllers
         }
 
         //BY ID 
+        [HttpGet]
+        [Route("api/tipofalla/{id}")]
         public TipoFalla buscarId(int id)
         {
             return tipoFallaBL.buscarId(id);
