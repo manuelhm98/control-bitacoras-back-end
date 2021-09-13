@@ -51,9 +51,10 @@ namespace ControlBitacorasESFE.API.Controllers
         }
 
         [HttpGet]
-        [Route("api/usuario/lista")]
+        [Route("api/usuario/lista/")]
         public ListPaging usuariosLista(int page = 1, int pageSize = 5, string name = "", string rol = "")
         {
+          
             return usuarioBL.usuariosLista(page, pageSize, name, rol);
         }
 
