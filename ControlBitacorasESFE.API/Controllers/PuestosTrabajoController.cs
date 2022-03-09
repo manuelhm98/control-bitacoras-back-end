@@ -10,11 +10,12 @@ using System.Web.Http;
 
 namespace ControlBitacorasESFE.API.Controllers
 {
+    [Authorize]
     public class PuestosTrabajoController : ApiController
     {
         private PuestosTrabajoBL puestosTrabajoBL = new PuestosTrabajoBL();
 
-        //LISTA PAGIN
+         
         [HttpGet]
         [Route("api/puestostrabajo")]
         public List<PuestosTrabajo> puestosTrabajos()

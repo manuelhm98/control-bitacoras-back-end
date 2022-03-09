@@ -10,6 +10,7 @@ using System.Web.Http;
 
 namespace ControlBitacorasESFE.API.Controllers
 {
+    [Authorize]
     public class CpuController : ApiController
     {
         private CpuBL cpuBL = new CpuBL();

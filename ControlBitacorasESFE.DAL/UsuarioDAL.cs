@@ -121,14 +121,20 @@ namespace ControlBitacorasESFE.DAL
         {
             UserData userData = new UserData();
             string password = Sha256.GetSHA256(auth.Pass);
-            var usuario = db.Usuarios.Where(d => d.Email == auth.Email && d.Pass == password).FirstOrDefault();
+            var usuario = db.Usuarios.Include(r => r.Role).Where(d => d.Email == auth.Email && d.Pass == password).FirstOrDefault();
             
             if(usuario == null)
             {
                 return null;
             }
 
+            userData.UsuarioID = usuario.UsuarioID;
             userData.Email = usuario.Email;
+            userData.Nombre = usuario.Nombre;
+            userData.Apellido = usuario.Apellido;
+            userData.RoleID = usuario.RoleID;
+            userData.Role = usuario.Role;
+          
             userData.Token = GenerateToken(auth);
             return userData;
         }
@@ -144,11 +150,10 @@ namespace ControlBitacorasESFE.DAL
         //Paginacion
         public ListPaging  usuariosLista(int page = 1, int pageSize = 5, string name = "", string rol = "")
         {
-           
+     
 
-            var usuarios = (from Usuario in db.Usuarios.Include(r => r.Role)
-                           where Usuario.Estado == 1  && Usuario.Nombre.Contains(name)  && Usuario.Role.Roles.Contains(rol) select Usuario)
-
+            var usuarios = (from Usuario in db.Usuarios.Include(r => r.Role) 
+                           where Usuario.Estado == 1  && (Usuario.Nombre + Usuario.Apellido).Contains(name)  && Usuario.Role.Roles.Contains(rol) select Usuario)
                 .OrderByDescending(x => x.UsuarioID).Skip((page - 1) * pageSize)
                 .Take(pageSize).ToList();
             int totalRegistros = (from Usuario in db.Usuarios where Usuario.Estado == 1 select Usuario).Count();

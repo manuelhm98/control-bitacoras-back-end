@@ -10,6 +10,7 @@ using System.Web.Http;
 
 namespace ControlBitacorasESFE.API.Controllers
 {
+    [Authorize]
     public class MonitorController : ApiController   
     {
         //Instancia de referencias a metodos BL

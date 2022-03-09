@@ -16,5 +16,8 @@ namespace ControlBitacorasESFE.EL.Login
         public string Pass { get; set; }
         public int Estado { get; set; }
         public string Token { get; set; }
+
+        //Propiedades de navegacion 
+        public Role Role { get; set; }
     }
 }

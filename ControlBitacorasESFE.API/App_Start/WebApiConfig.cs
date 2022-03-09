@@ -20,7 +20,7 @@ namespace ControlBitacorasESFE.API
             config.MapHttpAttributeRoutes();
 
             //JWT
-            // config.MessageHandlers.Add(new TokenValidationHandler());
+             config.MessageHandlers.Add(new TokenValidationHandler());
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

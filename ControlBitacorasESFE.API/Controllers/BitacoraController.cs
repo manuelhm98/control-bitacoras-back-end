@@ -10,6 +10,7 @@ using System.Web.Http;
 
 namespace ControlBitacorasESFE.API.Controllers
 {
+    [Authorize]
     public class BitacoraController : ApiController
     {
         //Instancia de los metodos BL

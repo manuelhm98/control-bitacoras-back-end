@@ -29,9 +29,9 @@ namespace ControlBitacorasESFE.DAL
                 }
                 return r;
             }
-            catch (Exception ex)
+            catch 
             {
-                throw ex;
+                throw;
             }
         }
 

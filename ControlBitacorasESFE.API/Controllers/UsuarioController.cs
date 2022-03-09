@@ -20,13 +20,16 @@ namespace ControlBitacorasESFE.API.Controllers
        UsuarioBL usuarioBL = new UsuarioBL();
 
         //USUARIOS
+        [Authorize]
         [HttpGet]
         [Route("api/usuario")]
         public List<Usuario> usuarios()
         {
             return usuarioBL.usuarios();
         }
+
         //Metodo Guardar 
+        [Authorize]
         [HttpPost]
         [Route("api/usuario")]
         public int Guardar(Usuario usuario)
@@ -35,6 +38,7 @@ namespace ControlBitacorasESFE.API.Controllers
         }
 
         //EDITAR
+        [Authorize]
         [HttpPut]
         [Route("api/usuario")]
         public int editarUsuario(Usuario usuario)
@@ -43,6 +47,7 @@ namespace ControlBitacorasESFE.API.Controllers
         }
 
         //ELIMINADI LOGICO
+        [Authorize]
         [HttpDelete]
         [Route("api/usuario/{id}")]
         public int eliminarUsuario(int id)
@@ -50,6 +55,7 @@ namespace ControlBitacorasESFE.API.Controllers
             return usuarioBL.EliminarUsuario(id);
         }
 
+        [Authorize]
         [HttpGet]
         [Route("api/usuario/lista/")]
         public ListPaging usuariosLista(int page = 1, int pageSize = 5, string name = "", string rol = "")
@@ -58,8 +64,8 @@ namespace ControlBitacorasESFE.API.Controllers
             return usuarioBL.usuariosLista(page, pageSize, name, rol);
         }
 
-
         //BUSCAR USUARIO ID
+        [Authorize]
         [HttpGet]
         [Route("api/usuario/{id}")]
         public Usuario buscarUsuarioID(int id)
@@ -69,7 +75,7 @@ namespace ControlBitacorasESFE.API.Controllers
 
         //Metodo Login
         [HttpPost]
-        [Route("login")]
+        [Route("api/usuario/login")]
         public Respuesta Login(Auth auth)
         {
             return usuarioBL.Login(auth);

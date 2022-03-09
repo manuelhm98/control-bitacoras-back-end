@@ -81,7 +81,14 @@ namespace ControlBitacorasESFE.DAL
             {
                 if(PuestosTrabajoID > 0 || PuestosTrabajoID != 0)
                 {
-                    puestosTrabajo = db.PuestosTrabajos.Find(PuestosTrabajoID);
+                    puestosTrabajo = db.PuestosTrabajos
+                        .Include(a => a.Area)
+                                  .Include(m => m.Monitor)
+                                  .Include(u => u.Ups)
+                                  .Include(c => c.Cpu)
+                                  .Include(mu => mu.Mueble).FirstOrDefault(x => x.PuestosTrabajoID == PuestosTrabajoID);
+
+                    // puestosTrabajo = db.PuestosTrabajos.Find(PuestosTrabajoID);
                 }
             }
             catch (Exception ex)

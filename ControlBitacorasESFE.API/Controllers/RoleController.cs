@@ -12,6 +12,7 @@ using ControlBitacorasESFE.EL.Middlewares;
 
 namespace ControlBitacorasESFE.API.Controllers
 {
+    [Authorize]
     public class RoleController : ApiController
     {
 

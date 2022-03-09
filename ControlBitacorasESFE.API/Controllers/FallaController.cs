@@ -10,6 +10,7 @@ using System.Web.Http;
 
 namespace ControlBitacorasESFE.API.Controllers
 {
+    [Authorize]
     public class FallaController : ApiController
     {
         private FallaBL fallaBL = new FallaBL();
