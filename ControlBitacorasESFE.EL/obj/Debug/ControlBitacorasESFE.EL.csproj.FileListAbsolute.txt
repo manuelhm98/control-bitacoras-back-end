@@ -22,7 +22,6 @@ F:\ControlBitacorasESFE\ControlBitacorasESFE.EL\bin\Debug\Microsoft.IdentityMode
 F:\ControlBitacorasESFE\ControlBitacorasESFE.EL\bin\Debug\Microsoft.IdentityModel.Logging.xml
 F:\ControlBitacorasESFE\ControlBitacorasESFE.EL\bin\Debug\Microsoft.IdentityModel.Tokens.xml
 F:\ControlBitacorasESFE\ControlBitacorasESFE.EL\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
-F:\ControlBitacorasESFE\ControlBitacorasESFE.EL\obj\Debug\ControlBitacorasESFE.EL.csproj.AssemblyReference.cache
 F:\ControlBitacorasESFE\ControlBitacorasESFE.EL\obj\Debug\ControlBitacorasESFE.EL.csproj.CoreCompileInputs.cache
 F:\ControlBitacorasESFE\ControlBitacorasESFE.EL\obj\Debug\ControlBitacorasESFE.EL.csproj.CopyComplete
 F:\ControlBitacorasESFE\ControlBitacorasESFE.EL\obj\Debug\ControlBitacorasESFE.EL.dll

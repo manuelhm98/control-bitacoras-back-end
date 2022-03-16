@@ -7,7 +7,7 @@ namespace ControlBitacorasESFE.EL
 {
     public static class TokenGenerator
     {
-        public static string GenerateTokenJwt(string email)
+        public static string GenerateTokenJwt(string email, string roles, Int16 id)
         {
             // appsetting for Token JWT
             var secretKey = ConfigurationManager.AppSettings["JWT_SECRET_KEY"];
@@ -19,8 +19,14 @@ namespace ControlBitacorasESFE.EL
             var signingCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);
 
             // create a claimsIdentity
-            ClaimsIdentity claimsIdentity = new ClaimsIdentity(new[] { new Claim(ClaimTypes.Email, email) });
+            ClaimsIdentity claimsIdentity = new ClaimsIdentity(new[] { 
+                new Claim(ClaimTypes.Email, email),
+                new Claim(ClaimTypes.Role, roles) ,
+                 new Claim(ClaimTypes.NameIdentifier, Convert.ToString(id))
+            }); 
 
+
+        
             // create token to the user
             var tokenHandler = new System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler();
             var jwtSecurityToken = tokenHandler.CreateJwtSecurityToken(

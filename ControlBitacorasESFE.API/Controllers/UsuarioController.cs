@@ -65,8 +65,8 @@ namespace ControlBitacorasESFE.API.Controllers
         }
 
         //BUSCAR USUARIO ID
-        [Authorize]
-        [HttpGet]
+        [Authorize]         
+        [HttpGet]                       
         [Route("api/usuario/{id}")]
         public Usuario buscarUsuarioID(int id)
         {

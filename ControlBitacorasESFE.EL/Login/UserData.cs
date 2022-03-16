@@ -8,7 +8,7 @@ namespace ControlBitacorasESFE.EL.Login
 {
     public class UserData
     {
-        public Int16 UsuarioID { get; set; }
+        public Int16 Id { get; set; }
         public Int16 RoleID { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
@@ -18,6 +18,6 @@ namespace ControlBitacorasESFE.EL.Login
         public string Token { get; set; }
 
         //Propiedades de navegacion 
-        public Role Role { get; set; }
+        public string  Roles { get; set; }
     }
 }

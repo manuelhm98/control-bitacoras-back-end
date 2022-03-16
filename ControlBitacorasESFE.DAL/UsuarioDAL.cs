@@ -128,22 +128,17 @@ namespace ControlBitacorasESFE.DAL
                 return null;
             }
 
-            userData.UsuarioID = usuario.UsuarioID;
-            userData.Email = usuario.Email;
-            userData.Nombre = usuario.Nombre;
-            userData.Apellido = usuario.Apellido;
-            userData.RoleID = usuario.RoleID;
-            userData.Role = usuario.Role;
-          
-            userData.Token = GenerateToken(auth);
+            userData.Id = usuario.UsuarioID;
+            userData.Roles = usuario.Role.Roles;
+            userData.Token = GenerateToken(auth, userData);
             return userData;
         }
 
         //Metodo Generar JWT
-        public string GenerateToken(Auth auth)
+        public string GenerateToken(Auth auth, UserData userData)
         {
             string r = "";
-            var token = TokenGenerator.GenerateTokenJwt(auth.Email);
+            var token = TokenGenerator.GenerateTokenJwt(auth.Email, userData.Roles, userData.Id);
             return r = token; 
         }
 
