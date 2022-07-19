@@ -26,3 +26,4 @@ F:\ControlBitacorasESFE\ControlBitacorasESFE.EL\obj\Debug\ControlBitacorasESFE.E
 F:\ControlBitacorasESFE\ControlBitacorasESFE.EL\obj\Debug\ControlBitacorasESFE.EL.csproj.CopyComplete
 F:\ControlBitacorasESFE\ControlBitacorasESFE.EL\obj\Debug\ControlBitacorasESFE.EL.dll
 F:\ControlBitacorasESFE\ControlBitacorasESFE.EL\obj\Debug\ControlBitacorasESFE.EL.pdb
+F:\ControlBitacorasESFE\ControlBitacorasESFE.EL\obj\Debug\ControlBitacorasESFE.EL.csproj.AssemblyReference.cache

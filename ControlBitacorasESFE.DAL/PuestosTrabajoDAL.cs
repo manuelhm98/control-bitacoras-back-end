@@ -128,6 +128,26 @@ namespace ControlBitacorasESFE.DAL
             return model;
         }
 
+
+        public PaginCount  puestosTrabajosCount()
+        {
+            int monitores = (from Monitor in db.Monitors where Monitor.Estado == 1 select Monitor).Count();
+            int ups = (from Ups in db.Upss where Ups.Estado == 1 select Ups).Count();
+            int cpu = (from Cpu in db.Cpus where Cpu.Estado == 1 select Cpu).Count();
+            int puestosTrabajo = (from PuestosTrabajo in db.PuestosTrabajos where PuestosTrabajo.Estado == 1 select PuestosTrabajo).Count();
+            int bitacora = (from Bitacora in db.Bitacoras where Bitacora.Estado == 1 select Bitacora).Count();
+
+            PaginCount paginCount = new PaginCount();
+            paginCount.Monitores = monitores;
+            paginCount.Ups = ups;
+            paginCount.Cpu = cpu;
+            paginCount.PuestosTrabajo = puestosTrabajo;
+            paginCount.Bitacoras = bitacora;
+
+            return paginCount;
+        }
+
+
         //LISTA PUESTOS TRABAJO 
         public List<PuestosTrabajo> puestosTrabajos()
         {
@@ -141,6 +161,8 @@ namespace ControlBitacorasESFE.DAL
 
             return puestosTrabajo;
         }
+
+   
 
 
     }

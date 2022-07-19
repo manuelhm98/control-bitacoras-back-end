@@ -40,6 +40,13 @@ namespace ControlBitacorasESFE.BL
             return PuestosTrabajoDAL.listPaging(page, pageSize);
         }
 
+        //LISTA COUNT 
+
+        public PaginCount puestosTrabajosCount()
+        {
+            return PuestosTrabajoDAL.puestosTrabajosCount();
+        }
+
         //LISTA PUESTOS 
         public List<PuestosTrabajo> puestosTrabajos()
         {

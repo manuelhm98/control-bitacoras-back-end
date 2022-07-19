@@ -93,7 +93,7 @@ namespace ControlBitacorasESFE.DAL
         //PAGINACION
         public ListPagingBitacora bitacorasLista(int page = 1, int pageSize = 5)
         {
-            var bitacoras = (from Bitacora in db.Bitacoras.Include(p => p.PuestosTrabajo).Include(u => u.Usuario).Include(f => f.Falla)
+            var bitacoras = (from Bitacora in db.Bitacoras.Include(p => p.PuestosTrabajo.Area).Include(u => u.Usuario).Include(f => f.Falla)
                              where Bitacora.Estado == 1
                              select Bitacora).OrderByDescending(x => x.BitacoraID).Skip((page - 1) * pageSize)
                              .Take(pageSize).ToList();

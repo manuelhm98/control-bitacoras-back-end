@@ -10,7 +10,7 @@ using System.Web.Http;
 
 namespace ControlBitacorasESFE.API.Controllers
 {
-    [Authorize]
+   // [Authorize]
     public class PuestosTrabajoController : ApiController
     {
         private PuestosTrabajoBL puestosTrabajoBL = new PuestosTrabajoBL();
@@ -29,6 +29,15 @@ namespace ControlBitacorasESFE.API.Controllers
         {
             return puestosTrabajoBL.listPaging(page, pageSize);
         }
+
+        //COUNT 
+        [HttpGet]
+        [Route("api/puestostrabajo/count")]
+        public PaginCount puestosTrabajosCount()
+        {
+            return puestosTrabajoBL.puestosTrabajosCount();
+        }
+
         //Instancia Guardar
         [HttpPost]
         [Route("api/puestostrabajo")]
