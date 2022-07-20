@@ -99,7 +99,7 @@ namespace ControlBitacorasESFE.DAL
         }
 
         //LIST PAGING
-        public ListPagingPuestosTrabajo listPaging(int page = 1, int pageSize = 5)
+        public ListPagingPuestosTrabajo listPaging(int page = 1, int pageSize = 1)
         {
             var puestosTrabajo = (from PuestosTrabajo in db.PuestosTrabajos.Include(a => a.Area)
                                   .Include(m => m.Monitor)
@@ -116,13 +116,7 @@ namespace ControlBitacorasESFE.DAL
             var model = new ListPagingPuestosTrabajo();
             model.PuestosTrabajos = puestosTrabajo;
             model.paginaActual = page;
-            model.TotalRegistros = totalRegistros / pageSize;
-
-            if(model.TotalRegistros % 2 != 0)
-            {
-                model.TotalRegistros = Math.Truncate(model.TotalRegistros) + 1;
-            }
-
+            model.TotalRegistros = (int)Math.Ceiling((double)totalRegistros / pageSize);
             model.RegistroPorPagina = pageSize;
 
             return model;

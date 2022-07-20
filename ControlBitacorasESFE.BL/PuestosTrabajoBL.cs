@@ -35,7 +35,7 @@ namespace ControlBitacorasESFE.BL
         }
 
         //LISTA PAGNG
-        public ListPagingPuestosTrabajo listPaging(int page = 1, int pageSize = 5)
+        public ListPagingPuestosTrabajo listPaging(int page = 1, int pageSize = 1)
         {
             return PuestosTrabajoDAL.listPaging(page, pageSize);
         }

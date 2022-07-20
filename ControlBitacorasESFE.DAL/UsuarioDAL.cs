@@ -142,13 +142,13 @@ namespace ControlBitacorasESFE.DAL
             return r = token; 
         }
 
-        //Paginacion
-        public ListPaging  usuariosLista(int page = 1, int pageSize = 5, string name = "", string rol = "")
+        public ListPaging usuariosLista(int page = 1, int pageSize = 5, string name = "", string rol = "")
         {
-     
 
-            var usuarios = (from Usuario in db.Usuarios.Include(r => r.Role) 
-                           where Usuario.Estado == 1  && (Usuario.Nombre + Usuario.Apellido).Contains(name)  && Usuario.Role.Roles.Contains(rol) select Usuario)
+
+            var usuarios = (from Usuario in db.Usuarios.Include(r => r.Role)
+                            where Usuario.Estado == 1 && (Usuario.Nombre + Usuario.Apellido).Contains(name) && Usuario.Role.Roles.Contains(rol)
+                            select Usuario)
                 .OrderByDescending(x => x.UsuarioID).Skip((page - 1) * pageSize)
                 .Take(pageSize).ToList();
             int totalRegistros = (from Usuario in db.Usuarios where Usuario.Estado == 1 select Usuario).Count();
@@ -156,16 +156,9 @@ namespace ControlBitacorasESFE.DAL
             var model = new ListPaging();
             model.Usuarios = usuarios;
             model.paginaActual = page;
-            model.TotalRegistros = totalRegistros / pageSize;
-
-
-
-            if (model.TotalRegistros % 2 != 0)
-            {
-                model.TotalRegistros = Math.Truncate(model.TotalRegistros) + 1;
-            }
+            model.TotalRegistros = (int)Math.Ceiling((double)totalRegistros / pageSize);
             model.RegistroPorPagina = pageSize;
-     
+
             return model;
         }
 

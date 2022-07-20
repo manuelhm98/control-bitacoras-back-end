@@ -106,13 +106,7 @@ namespace ControlBitacorasESFE.DAL
             var model = new ListPagingProcesador();
             model.Procesadors = procesadors;
             model.paginaActual = page;
-            model.TotalRegistros = totalRegistros / pageSize;
-
-            if(model.TotalRegistros % 2 != 0)
-            {
-                model.TotalRegistros = Math.Truncate(model.TotalRegistros) + 1;
-            }
-
+            model.TotalRegistros = (int)Math.Ceiling((double)totalRegistros / pageSize);
             model.RegistroPorPagina = pageSize;
 
             return model;
