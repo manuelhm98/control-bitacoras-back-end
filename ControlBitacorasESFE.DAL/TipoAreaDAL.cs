@@ -100,11 +100,13 @@ namespace ControlBitacorasESFE.DAL
 
             int totalRegistros = (from TipoArea in db.TipoAreas where TipoArea.Estado == 1 select TipoArea).Count();
 
-            var model = new ListPagingTipoArea();
-            model.TipoAreas = tipoAreas;
-            model.paginaActual = page;
-            model.TotalRegistros = (int)Math.Ceiling((double)totalRegistros / pageSize);
-            model.RegistroPorPagina = pageSize;
+            var model = new ListPagingTipoArea
+            {
+                TipoAreas = tipoAreas,
+                paginaActual = page,
+                TotalRegistros = (int)Math.Ceiling((double)totalRegistros / pageSize),
+                RegistroPorPagina = pageSize
+            };
 
             return model;
         }

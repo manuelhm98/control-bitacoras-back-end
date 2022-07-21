@@ -10,7 +10,7 @@ using System.Web.Http;
 
 namespace ControlBitacorasESFE.API.Controllers
 {
-    [Authorize]
+   // [Authorize]
     public class TipoAreaController : ApiController
     {
         private TipoAreaBL tipoAreaBL = new TipoAreaBL();

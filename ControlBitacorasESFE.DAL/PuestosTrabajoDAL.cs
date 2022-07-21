@@ -99,7 +99,7 @@ namespace ControlBitacorasESFE.DAL
         }
 
         //LIST PAGING
-        public ListPagingPuestosTrabajo listPaging(int page = 1, int pageSize = 1)
+        public ListPagingPuestosTrabajo listPaging(int page = 1, int pageSize = 5)
         {
             var puestosTrabajo = (from PuestosTrabajo in db.PuestosTrabajos.Include(a => a.Area)
                                   .Include(m => m.Monitor)
