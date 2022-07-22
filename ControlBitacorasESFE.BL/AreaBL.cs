@@ -44,9 +44,9 @@ namespace ControlBitacorasESFE.BL
         } 
 
         //PAGING LIST 
-        public ListPagingArea listPaging(int page = 1, int pageSize = 5)
+        public ListPagingArea listPaging(int page = 1, int pageSize = 5, string name = "", string tipo = "")
         {
-            return areaDAL.listPaging(page, pageSize);
+            return areaDAL.listPaging(page, pageSize, name, tipo);
         }
 
         

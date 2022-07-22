@@ -22,9 +22,10 @@ namespace ControlBitacorasESFE.DAL
             return db.Roles.ToList();
         }
         //Paginacion
-        public ListPaginRol RoleLista(int page = 1, int pageSize = 5)
+        public ListPaginRol RoleLista(int page = 1, int pageSize = 5, string rol = "")
         {
-            var role = (from Role in db.Roles where Role.Estado == 1 select Role)
+            var role = (from Role in db.Roles where Role.Estado == 1 && Role.Roles.Contains(rol)
+                        select Role)
                 .OrderByDescending(x => x.RoleID).Skip((page - 1) * pageSize)
                 .Take(pageSize).ToList();
             int totalRegistros = (from Role in db.Roles where Role.Estado == 1 select Role).Count();

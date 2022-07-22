@@ -26,9 +26,9 @@ namespace ControlBitacorasESFE.API.Controllers
         //PAGING CPUS
         [HttpGet]
         [Route("api/cpu/lista")]
-        public ListPagingCpu listPaging(int page = 1, int pageSize = 5)
+        public ListPagingCpu listPaging(int page = 1, int pageSize = 5, string name = "", string proce = "")
         {
-            return cpuBL.ListPaging(page, pageSize);
+            return cpuBL.ListPaging(page, pageSize, name, proce);
         }
 
         //Instancia Guardar

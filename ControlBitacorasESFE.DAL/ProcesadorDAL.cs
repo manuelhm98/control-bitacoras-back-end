@@ -20,7 +20,7 @@ namespace ControlBitacorasESFE.DAL
             int r = 0;
             try
             {
-                if(procesador != null)
+                if (procesador != null)
                 {
                     procesador.Estado = 1;
                     db.Procesadors.Add(procesador);
@@ -41,7 +41,7 @@ namespace ControlBitacorasESFE.DAL
             try
             {
                 var local = db.Set<Procesador>().Local.FirstOrDefault(f => f.ProcesadorID == procesador.ProcesadorID);
-                if(local != null)
+                if (local != null)
                 {
                     db.Entry(local).State = EntityState.Detached;
                 }
@@ -78,7 +78,7 @@ namespace ControlBitacorasESFE.DAL
             Procesador procesador = null;
             try
             {
-                if(ProcesadorID > 0 || ProcesadorID != 0)
+                if (ProcesadorID > 0 || ProcesadorID != 0)
                 {
                     procesador = db.Procesadors.Find(ProcesadorID);
                 }
@@ -90,10 +90,10 @@ namespace ControlBitacorasESFE.DAL
             return procesador;
         }
 
-        public ListPagingProcesador listPaging(int page = 1, int pageSize = 5)
+        public ListPagingProcesador listPaging(int page = 1, int pageSize = 5, string proce = "")
         {
             var procesadors = (from Procesador in db.Procesadors
-                               where Procesador.Estado == 1
+                               where Procesador.Estado == 1 && (Procesador.Modelo + Procesador.Velocidad).Contains(proce)
                                select Procesador)
                                .OrderByDescending(x => x.ProcesadorID)
                                .Skip((page - 1) * pageSize)

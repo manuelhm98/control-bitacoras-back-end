@@ -18,9 +18,9 @@ namespace ControlBitacorasESFE.API.Controllers
         //LISTA PAGING 
         [HttpGet]
         [Route("api/procesador/lista")]
-        public ListPagingProcesador listPaging(int page = 1 , int pageSize = 5)
+        public ListPagingProcesador listPaging(int page = 1 , int pageSize = 5, string proce = "")
         {
-            return procesadorBL.listPaging(page, pageSize);
+            return procesadorBL.listPaging(page, pageSize, proce);
         }
 
         //LISTA PROCESADOR 

@@ -21,9 +21,9 @@ namespace ControlBitacorasESFE.BL
         {
             return RoleDAL.listaRol();
         }
-        public ListPaginRol listaRoles(int page = 1, int pageSize = 5)
+        public ListPaginRol listaRoles(int page = 1, int pageSize = 5, string rol = "")
         {
-            return RoleDAL.RoleLista(page, pageSize);
+            return RoleDAL.RoleLista(page, pageSize, rol);
         }
 
         //Metodo Guardar roles 

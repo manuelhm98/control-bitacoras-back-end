@@ -102,11 +102,11 @@ namespace ControlBitacorasESFE.DAL
         }
 
         //LIST PAGING 
-        public ListPagingArea listPaging(int page = 1, int pageSize = 5)
+        public ListPagingArea listPaging(int page = 1, int pageSize = 5, string name = "", string tipo = "")
         {
             var areas = (from Area in db.Areas.Include(t => t.TipoArea)
                          .Include(u => u.Usuario)
-                         where Area.Estado == 1
+                         where Area.Estado == 1 && Area.NombreArea.Contains(name) && Area.TipoArea.Tipo.Contains(tipo)
                          select Area).OrderByDescending(x => x.AreaID)
                          .Skip((page - 1) * pageSize)
                          .Take(pageSize).ToList();

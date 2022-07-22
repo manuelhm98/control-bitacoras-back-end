@@ -91,10 +91,10 @@ namespace ControlBitacorasESFE.DAL
         }
 
         //LIST PAGING
-        public ListPagingMueble listPaging(int page = 1, int pageSize = 5)
+        public ListPagingMueble listPaging(int page = 1, int pageSize = 5, string mueble = "")
         {
             var muebles = (from Mueble in db.Muebles
-                           where Mueble.Estado == 1
+                           where Mueble.Estado == 1 && Mueble.Codigo.Contains(mueble)
                            select Mueble)
                            .OrderByDescending(x => x.MuebleID).Skip((page - 1) * pageSize)
                            .Take(pageSize).ToList();

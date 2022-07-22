@@ -91,10 +91,11 @@ namespace ControlBitacorasESFE.DAL
         }
 
         //LIST PAGING
-        public ListPagingMonitor listPaging(int page = 1, int pageSize = 5)
+        public ListPagingMonitor listPaging(int page = 1, int pageSize = 5, string monitor = "")
         {
             var monitors = (from Monitor in db.Monitors
                             where Monitor.Estado == 1
+                            && (Monitor.Codigo + Monitor.Modelo + Monitor.Pulgadas).Contains(monitor)
                             select Monitor)
                             .OrderByDescending(x => x.MonitorID).Skip((page - 1) * pageSize)
                             .Take(pageSize).ToList();

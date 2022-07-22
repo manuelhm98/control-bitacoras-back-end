@@ -36,9 +36,9 @@ namespace ControlBitacorasESFE.BL
         }
 
         //LISTA PAGING 
-        public ListPagingTipoFalla listPaging(int page = 1, int pageSize = 5)
+        public ListPagingTipoFalla listPaging(int page = 1, int pageSize = 5, string tipo = "")
         {
-            return tipoFallaDAL.ListPaging(page, pageSize);
+            return tipoFallaDAL.ListPaging(page, pageSize, tipo);
         }
 
         //LISTA TIPO FALLA 

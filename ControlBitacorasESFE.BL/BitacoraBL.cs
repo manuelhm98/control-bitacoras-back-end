@@ -34,9 +34,9 @@ namespace ControlBitacorasESFE.BL
             return bitacoraDAL.eliminarBitacora(BitacoraID);
         }
         //PAGINADO
-        public ListPagingBitacora listaBitacoras(int page = 1, int pageSize = 5)
+        public ListPagingBitacora listaBitacoras(int page = 1, int pageSize = 5, string fecha = "", string user = "", string rol = "", string falla = "", string puestos = "")
         {
-            return bitacoraDAL.bitacorasLista(page, pageSize);
+            return bitacoraDAL.bitacorasLista(page, pageSize, fecha, user, rol, falla, puestos);
         }
         //LISTA
         public List<Bitacora> bitacoras()

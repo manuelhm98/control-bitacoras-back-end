@@ -40,9 +40,9 @@ namespace ControlBitacorasESFE.BL
             return cpuDAL.BuscarID(id);
         }
         //LIST PAGIN 
-        public ListPagingCpu ListPaging(int page = 1, int pageSize = 5)
+        public ListPagingCpu ListPaging(int page = 1, int pageSize = 5, string name = "", string proce = "")
         {
-            return cpuDAL.ListPaging(page, pageSize);
+            return cpuDAL.ListPaging(page, pageSize, name, proce);
         }
 
         //LISTA CPU

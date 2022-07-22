@@ -52,9 +52,9 @@ namespace ControlBitacorasESFE.API.Controllers
         //lISTA PAGING 
         [HttpGet]
         [Route("api/area/lista")]
-        public ListPagingArea listPaging(int page = 1, int pageSize = 5)
+        public ListPagingArea listPaging(int page = 1, int pageSize = 5, string name = "", string tipo = "")
         {
-            return areaBL.listPaging(page, pageSize);
+            return areaBL.listPaging(page, pageSize, name, tipo);
         }
 
         //BY ID 

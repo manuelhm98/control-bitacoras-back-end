@@ -93,10 +93,10 @@ namespace ControlBitacorasESFE.DAL
         }
 
         //LIST PAGING 
-        public ListPagingUps listPaging(int page = 1, int pageSize = 5)
+        public ListPagingUps listPaging(int page = 1, int pageSize = 5, string code = "")
         {
             var ups = (from Ups in db.Upss
-                       where Ups.Estado == 1
+                       where Ups.Estado == 1 && Ups.Codigo.Contains(code)
                        select Ups).OrderByDescending(x => x.UpsID)
                        .Skip((page - 1) * pageSize)
                        .Take(pageSize).ToList();

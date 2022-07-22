@@ -37,9 +37,9 @@ namespace ControlBitacorasESFE.BL
 
         //LISTA PAGING
 
-        public ListPagingMonitor listPaging(int page = 1, int pageSize = 5)
+        public ListPagingMonitor listPaging(int page = 1, int pageSize = 5, string monitor = "")
         {
-            return monitorDAL.listPaging(page, pageSize);
+            return monitorDAL.listPaging(page, pageSize, monitor);
         }
 
         //LISTA MONITORES

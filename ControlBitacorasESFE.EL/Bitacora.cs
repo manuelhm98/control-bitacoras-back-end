@@ -18,7 +18,7 @@ namespace ControlBitacorasESFE.EL
         public Int64 FallaID { get; set; }
         [Required]
         [DisplayFormat(DataFormatString ="{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime FechaHora { get; set; }
+        public string FechaHora { get; set; }
         [Required]
         public string Comentario { get; set; }
         [Required]

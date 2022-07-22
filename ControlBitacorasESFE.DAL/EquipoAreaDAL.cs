@@ -93,10 +93,12 @@ namespace ControlBitacorasESFE.DAL
         }
 
         //LIST PAGIN 
-        public ListPagingEquipoArea listPaging(int page = 5, int pageSize = 5)
+        public ListPagingEquipoArea listPaging(int page = 5, int pageSize = 5, string equipo = "", string area = "")
         {
             var equipoAreas = (from EquipoArea in db.EquipoAreas.Include(a => a.Area)
-                               where EquipoArea.Estado == 1
+                               where EquipoArea.Estado == 1 
+                               && (EquipoArea.Equipo + EquipoArea.Codigo).Contains(equipo)
+                               && EquipoArea.Area.NombreArea.Contains(area)
                                select EquipoArea).OrderByDescending(x => x.EquipoAreaID).Skip((page - 1) * pageSize)
                                .Take(pageSize).ToList();
 

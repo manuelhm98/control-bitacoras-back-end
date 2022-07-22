@@ -20,7 +20,7 @@ namespace ControlBitacorasESFE.DAL
             int r = 0;
             try
             {
-                if(tipoArea != null)
+                if (tipoArea != null)
                 {
                     tipoArea.Estado = 1;
                     db.TipoAreas.Add(tipoArea);
@@ -41,7 +41,7 @@ namespace ControlBitacorasESFE.DAL
             try
             {
                 var local = db.Set<TipoArea>().Local.FirstOrDefault(f => f.TipoAreaID == tipoArea.TipoAreaID);
-                if(local != null)
+                if (local != null)
                 {
                     db.Entry(local).State = EntityState.Detached;
                 }
@@ -71,7 +71,7 @@ namespace ControlBitacorasESFE.DAL
             }
             return r;
         }
-        
+
 
         //Metodo Buscar ID
         public TipoArea BuscarID(int TipoAreaID)
@@ -79,7 +79,7 @@ namespace ControlBitacorasESFE.DAL
             TipoArea tipoArea = null;
             try
             {
-                if(TipoAreaID > 0 || TipoAreaID != 0)
+                if (TipoAreaID > 0 || TipoAreaID != 0)
                 {
                     tipoArea = db.TipoAreas.Find(TipoAreaID);
                 }
@@ -92,9 +92,10 @@ namespace ControlBitacorasESFE.DAL
         }
 
         //LIST PAGIN
-        public ListPagingTipoArea listPaging(int page = 1, int pageSize = 5)
+        public ListPagingTipoArea listPaging(int page = 1, int pageSize = 5, string tipo = "")
         {
-            var tipoAreas = (from TipoArea in db.TipoAreas where TipoArea.Estado == 1 select TipoArea)
+            var tipoAreas = (from TipoArea in db.TipoAreas where TipoArea.Estado == 1 && TipoArea.Tipo.Contains(tipo)
+                             select TipoArea)
                             .OrderByDescending(x => x.TipoAreaID).Skip((page - 1) * pageSize)
                             .Take(pageSize).ToList();
 

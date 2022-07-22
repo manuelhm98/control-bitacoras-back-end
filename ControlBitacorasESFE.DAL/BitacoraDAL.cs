@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ControlBitacorasESFE.DAL
 {
-   public  class BitacoraDAL
+    public class BitacoraDAL
     {
         //Declaracion de contexto
         private ProjectContext db = new ProjectContext();
@@ -21,7 +21,7 @@ namespace ControlBitacorasESFE.DAL
             int r = 0;
             try
             {
-                if(bitacora != null)
+                if (bitacora != null)
                 {
                     bitacora.Estado = 1;
                     db.Bitacoras.Add(bitacora);
@@ -42,7 +42,7 @@ namespace ControlBitacorasESFE.DAL
             try
             {
                 var local = db.Set<Bitacora>().Local.FirstOrDefault(f => f.BitacoraID == bitacora.BitacoraID);
-                if(local != null)
+                if (local != null)
                 {
                     db.Entry(local).State = EntityState.Detached;
                 }
@@ -79,7 +79,7 @@ namespace ControlBitacorasESFE.DAL
             Bitacora bitacora = null;
             try
             {
-                if(BitacoraID > 0 || BitacoraID != 0)
+                if (BitacoraID > 0 || BitacoraID != 0)
                 {
                     bitacora = db.Bitacoras.Find(BitacoraID);
                 }
@@ -91,10 +91,14 @@ namespace ControlBitacorasESFE.DAL
             return bitacora;
         }
         //PAGINACION
-        public ListPagingBitacora bitacorasLista(int page = 1, int pageSize = 5)
+        public ListPagingBitacora bitacorasLista(int page = 1, int pageSize = 5, string fecha = "", string user = "", string rol = "", string falla = "", string puestos = "")
         {
             var bitacoras = (from Bitacora in db.Bitacoras.Include(p => p.PuestosTrabajo.Area).Include(u => u.Usuario).Include(f => f.Falla)
-                             where Bitacora.Estado == 1
+                             where Bitacora.Estado == 1 && Bitacora.FechaHora.Contains(fecha) 
+                             && Bitacora.Usuario.Nombre.Contains(user) 
+                             && Bitacora.Usuario.Role.Roles.Contains(rol)
+                             && Bitacora.Falla.TipoFalla.Tipo.Contains(falla)
+                             && Bitacora.PuestosTrabajo.Codigo.Contains(puestos)
                              select Bitacora).OrderByDescending(x => x.BitacoraID).Skip((page - 1) * pageSize)
                              .Take(pageSize).ToList();
             int totalRegistros = (from Bitacora in db.Bitacoras where Bitacora.Estado == 1 select Bitacora).Count();

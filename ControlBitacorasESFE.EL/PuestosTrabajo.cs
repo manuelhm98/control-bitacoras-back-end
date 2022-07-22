@@ -20,12 +20,16 @@ namespace ControlBitacorasESFE.EL
         public Int16 CpuID { get; set; }
         //Propiedad de relacion
         public Int16 MuebleID { get; set; }
+        public string Codigo { get; set; }
+
         [Required]
         public bool Teclado { get; set; }
         [Required]
         public bool Mouse { get; set; }
         [Required]
         public int Estado { get; set; }
+
+      
 
         //Propiedades de navegacion 
         public Area Area { get; set; }

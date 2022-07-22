@@ -38,9 +38,9 @@ namespace ControlBitacorasESFE.API.Controllers
         //LISTA
         [HttpGet]
         [Route("api/rol/lista")]
-        public ListPaginRol roleLista(int page = 1, int pageSize = 5)
+        public ListPaginRol roleLista(int page = 1, int pageSize = 5, string rol = "")
         {
-            return roleBL.listaRoles(page, pageSize);
+            return roleBL.listaRoles(page, pageSize, rol);
         }
        
         //list

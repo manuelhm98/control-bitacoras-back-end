@@ -42,9 +42,9 @@ namespace ControlBitacorasESFE.BL
         }
 
         //LISTA PAGIN 
-        public ListPagingEquipoArea listPaging(int page = 1, int pageSize = 5)
+        public ListPagingEquipoArea listPaging(int page = 1, int pageSize = 5, string equipo = "", string area = "")
         {
-            return equipoAreaDAL.listPaging(page, pageSize);
+            return equipoAreaDAL.listPaging(page, pageSize, equipo, area);
         }
 
         //LISTA EQUIPOAREA

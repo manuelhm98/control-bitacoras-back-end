@@ -36,9 +36,9 @@ namespace ControlBitacorasESFE.BL
         }
 
         //LIST PAGING 
-        public ListPagingUps listPaging(int page = 1, int pageSize = 5)
+        public ListPagingUps listPaging(int page = 1, int pageSize = 5, string code = "")
         {
-            return upsDAL.listPaging(page, pageSize);
+            return upsDAL.listPaging(page, pageSize, code);
         }
 
         //LISTA UPS 

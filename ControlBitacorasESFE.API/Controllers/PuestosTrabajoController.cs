@@ -25,9 +25,10 @@ namespace ControlBitacorasESFE.API.Controllers
 
         [HttpGet]
         [Route("api/puestostrabajo/lista")]
-        public ListPagingPuestosTrabajo listPaging(int page = 1, int pageSize = 5)
+        public ListPagingPuestosTrabajo listPaging(int page = 1, int pageSize = 5, string puesto = "",
+            string area = "", string monitor = "", string ups = "", string cpu = "", string mueble = "")
         {
-            return puestosTrabajoBL.listPaging(page, pageSize);
+            return puestosTrabajoBL.listPaging(page, pageSize, puesto, area, monitor, ups, cpu, mueble);
         }
 
         //COUNT 

@@ -18,9 +18,9 @@ namespace ControlBitacorasESFE.API.Controllers
         //PAGING LIST 
         [HttpGet]
         [Route("api/falla/lista")]
-        public ListPagingFalla listPaging(int page = 1, int pageSize = 5)
+        public ListPagingFalla listPaging(int page = 1, int pageSize = 5, string falla = "", string tipo = "")
         {
-            return fallaBL.listPaging(page, pageSize);
+            return fallaBL.listPaging(page, pageSize, falla, tipo);
         }
 
         //LISTA FALLA

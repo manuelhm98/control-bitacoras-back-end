@@ -93,10 +93,10 @@ namespace ControlBitacorasESFE.DAL
         }
 
         //LISTA PAGIN 
-        public ListPagingCpu ListPaging(int page = 1, int pageSize = 5)
+        public ListPagingCpu ListPaging(int page = 1, int pageSize = 5, string name = "", string proce = "")
         {
             var cpus = (from Cpu in db.Cpus.Include(p => p.Procesador)
-                        where Cpu.Estado == 1
+                        where Cpu.Estado == 1 && (Cpu.Codigo + Cpu.Ram + Cpu.Almacenamiento).Contains(name) && Cpu.Procesador.Modelo.Contains(proce)
                         select Cpu).OrderByDescending(x => x.CpuID).Skip((page - 1) * pageSize)
                         .Take(pageSize).ToList();
 

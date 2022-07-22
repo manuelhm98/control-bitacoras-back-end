@@ -99,14 +99,20 @@ namespace ControlBitacorasESFE.DAL
         }
 
         //LIST PAGING
-        public ListPagingPuestosTrabajo listPaging(int page = 1, int pageSize = 5)
+        public ListPagingPuestosTrabajo listPaging(int page = 1, int pageSize = 5, string puesto = "",
+            string area = "", string monitor = "", string ups = "", string cpu = "", string mueble = "")
         {
             var puestosTrabajo = (from PuestosTrabajo in db.PuestosTrabajos.Include(a => a.Area)
                                   .Include(m => m.Monitor)
                                   .Include(u => u.Ups)
                                   .Include(c => c.Cpu)
                                   .Include(mu => mu.Mueble)
-                                  where PuestosTrabajo.Estado == 1
+                                  where PuestosTrabajo.Estado == 1 && PuestosTrabajo.Codigo.Contains(puesto)
+                                  && PuestosTrabajo.Area.NombreArea.Contains(area) 
+                                  && (PuestosTrabajo.Monitor.Codigo + PuestosTrabajo.Monitor.Modelo).Contains(monitor)
+                                  && PuestosTrabajo.Ups.Codigo.Contains(ups)
+                                  && PuestosTrabajo.Cpu.Codigo.Contains(cpu)
+                                  && PuestosTrabajo.Mueble.Codigo.Contains(mueble)
                                   select PuestosTrabajo).OrderByDescending(x => x.PuestosTrabajoID)
                                   .Skip((page - 1) * pageSize)
                                   .Take(pageSize).ToList();

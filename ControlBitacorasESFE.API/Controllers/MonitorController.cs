@@ -53,9 +53,9 @@ namespace ControlBitacorasESFE.API.Controllers
 
         [HttpGet]
         [Route("api/monitor/lista")]
-        public ListPagingMonitor listPaging(int page = 1, int pageSize = 5)
+        public ListPagingMonitor listPaging(int page = 1, int pageSize = 5, string monitor = "")
         {
-            return monitorBL.listPaging(page, pageSize);
+            return monitorBL.listPaging(page, pageSize, monitor);
         }
 
         //  BY ID 

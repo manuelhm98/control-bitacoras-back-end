@@ -36,9 +36,9 @@ namespace ControlBitacorasESFE.BL
         }
 
         //PAGING LIST
-        public ListPagingProcesador listPaging(int page = 1, int pageSize = 5)
+        public ListPagingProcesador listPaging(int page = 1, int pageSize = 5, string proce = "")
         {
-            return procesadorDAL.listPaging(page, pageSize);
+            return procesadorDAL.listPaging(page, pageSize, proce);
         }
 
         //LISTA PROCESADOR 

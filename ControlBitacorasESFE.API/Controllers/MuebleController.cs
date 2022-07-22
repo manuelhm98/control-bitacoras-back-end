@@ -18,9 +18,9 @@ namespace ControlBitacorasESFE.API.Controllers
         //LIST PAGING 
         [HttpGet]
         [Route("api/mueble/lista")]
-        public ListPagingMueble listPaging(int page = 1, int pageSize = 5)
+        public ListPagingMueble listPaging(int page = 1, int pageSize = 5, string mueble = "")
         {
-            return muebleBL.listPaging(page, pageSize);
+            return muebleBL.listPaging(page, pageSize, mueble);
         }
 
         //LISTA MUEBLE

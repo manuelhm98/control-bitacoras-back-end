@@ -92,10 +92,10 @@ namespace ControlBitacorasESFE.DAL
         }
 
         //LIST PAGING 
-        public ListPagingTipoFalla ListPaging(int page = 1, int pageSize = 5)
+        public ListPagingTipoFalla ListPaging(int page = 1, int pageSize = 5, string tipo = "")
         {
             var tipoFalla = (from TipoFalla in db.TipoFallas
-                             where TipoFalla.Estado == 1
+                             where TipoFalla.Estado == 1 && TipoFalla.Tipo.Contains(tipo)
                              select TipoFalla).OrderByDescending(x => x.TipoFallaID)
                              .Skip((page - 1) * pageSize)
                              .Take(pageSize).ToList();

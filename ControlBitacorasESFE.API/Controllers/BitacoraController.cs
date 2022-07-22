@@ -27,9 +27,9 @@ namespace ControlBitacorasESFE.API.Controllers
         //PAGIN
         [HttpGet]
         [Route("api/bitacora/lista")]
-        public ListPagingBitacora listPagingBitacora(int page = 1, int pageSize = 5)
+        public ListPagingBitacora listPagingBitacora(int page = 1, int pageSize = 5, string fecha = "", string user = "", string rol = "", string falla = "", string puestos = "")
         {
-            return bitacoraBL.listaBitacoras(page, pageSize);
+            return bitacoraBL.listaBitacoras(page, pageSize, fecha, user, rol, falla, puestos);
         }
 
         //Instancia Guardar

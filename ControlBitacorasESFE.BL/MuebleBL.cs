@@ -36,9 +36,9 @@ namespace ControlBitacorasESFE.BL
         }
 
         //LISTA PAGING 
-        public ListPagingMueble listPaging(int page = 1, int pageSize = 5)
+        public ListPagingMueble listPaging(int page = 1, int pageSize = 5, string mueble = "")
         {
-            return muebleDAL.listPaging(page, pageSize);
+            return muebleDAL.listPaging(page, pageSize, mueble);
         }
 
         //LISTA MUEBLES

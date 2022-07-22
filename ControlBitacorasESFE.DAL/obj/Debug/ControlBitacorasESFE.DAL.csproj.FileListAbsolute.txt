@@ -42,3 +42,7 @@ F:\ControlBitacorasESFE\ControlBitacorasESFE.DAL\obj\Debug\ControlBitacorasESFE.
 F:\ControlBitacorasESFE\ControlBitacorasESFE.DAL\obj\Debug\ControlBitacorasESFE.DAL.csproj.CopyComplete
 F:\ControlBitacorasESFE\ControlBitacorasESFE.DAL\obj\Debug\ControlBitacorasESFE.DAL.dll
 F:\ControlBitacorasESFE\ControlBitacorasESFE.DAL\obj\Debug\ControlBitacorasESFE.DAL.pdb
+F:\ControlBitacorasESFE\ControlBitacorasESFE.DAL\obj\Debug\ControlBitacorasESFE.DAL.Migrations.InitialCreate.resources
+F:\ControlBitacorasESFE\ControlBitacorasESFE.DAL\obj\Debug\ControlBitacorasESFE.DAL.csproj.GenerateResource.cache
+F:\ControlBitacorasESFE\ControlBitacorasESFE.DAL\obj\Debug\ControlBitacorasESFE.DAL.Migrations.MigrationForBitacorasEmp.resources
+F:\ControlBitacorasESFE\ControlBitacorasESFE.DAL\obj\Debug\ControlBitacorasESFE.DAL.Migrations.forPuestosEmp.resources

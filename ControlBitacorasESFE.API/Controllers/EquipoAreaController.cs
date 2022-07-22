@@ -26,9 +26,9 @@ namespace ControlBitacorasESFE.API.Controllers
         //PAGIN LISTA
         [HttpGet]
         [Route("api/equipoarea/lista")]
-        public ListPagingEquipoArea listPaging(int page = 1, int pageSize = 5)
+        public ListPagingEquipoArea listPaging(int page = 1, int pageSize = 5, string equipo = "", string area = "")
         {
-            return equipoAreaBL.listPaging(page, pageSize);
+            return equipoAreaBL.listPaging(page, pageSize, equipo, area);
         }
 
 
