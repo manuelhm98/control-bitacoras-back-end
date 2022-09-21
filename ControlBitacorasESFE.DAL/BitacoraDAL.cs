@@ -112,10 +112,10 @@ namespace ControlBitacorasESFE.DAL
             return model;
         }
         //LISTA
-        public List<Bitacora> bitacoras()
+        public List<Bitacora> bitacoras(string start = "")
         {
-            var bitacoras = (from Bitacora in db.Bitacoras.Include(p => p.PuestosTrabajo).Include(u => u.Usuario).Include(f => f.Falla)
-                             where Bitacora.Estado == 1
+            var bitacoras = (from Bitacora in db.Bitacoras.Include(p => p.PuestosTrabajo.Area).Include(u => u.Usuario).Include(f => f.Falla)
+                             where Bitacora.Estado == 1 && Bitacora.FechaHora.Contains(start)
                              select Bitacora).OrderByDescending(x => x.BitacoraID).ToList();
 
             return bitacoras;

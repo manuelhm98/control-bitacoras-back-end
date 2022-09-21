@@ -39,9 +39,9 @@ namespace ControlBitacorasESFE.BL
             return bitacoraDAL.bitacorasLista(page, pageSize, fecha, user, rol, falla, puestos);
         }
         //LISTA
-        public List<Bitacora> bitacoras()
+        public List<Bitacora> bitacoras(string start = "")
         {
-            return bitacoraDAL.bitacoras();
+            return bitacoraDAL.bitacoras( start);
         }
 
         //BY ID

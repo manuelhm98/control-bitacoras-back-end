@@ -10,7 +10,7 @@ using System.Web.Http;
 
 namespace ControlBitacorasESFE.API.Controllers
 {
-    [Authorize]
+    
     public class BitacoraController : ApiController
     {
         //Instancia de los metodos BL
@@ -19,9 +19,9 @@ namespace ControlBitacorasESFE.API.Controllers
         //LISTA
         [HttpGet]
         [Route("api/bitacora")]
-        public List<Bitacora> bitacoras()
+        public List<Bitacora> bitacoras(string start = "")
         {
-            return bitacoraBL.bitacoras();
+            return bitacoraBL.bitacoras(start);
         }
 
         //PAGIN
